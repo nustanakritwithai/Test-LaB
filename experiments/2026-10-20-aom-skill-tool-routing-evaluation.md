@@ -6,7 +6,7 @@
 **Primary protocol:** `AI_Opportunity_Manager_V0.3.md` (ChatGPT File Library, unchanged).  
 **Implementation:** [README Skill–Tool Gate](../README.md), [Independent Development Policy](../INDEPENDENT_DEVELOPMENT_POLICY.md).  
 **Separation:** Multiverse is NOT an AOM runtime dependency; no cross-Skill merger.  
-**Safety:** No production systems, external accounts' content, timers, commercial operations, or unreviewed OSS code were modified. This public record contains no user file names, private analytics, credentials, or personal data.
+**Safety:** Only Test-LaB's README and this experiment record were written. No production systems, other connected services, timers, commercial operations, or unreviewed OSS code were modified or run. This public record includes no private analytics, credentials, or personal data.
 
 ## 1. Objective, hypothesis, and limits
 
