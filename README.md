@@ -7,11 +7,45 @@
 1. **Outcome-first:** Define the objective, current baseline, time horizon, and what would count as success before choosing a task.
 2. **Opportunity-first:** Explore realistic alternatives, including "continue the baseline" and "do nothing".
 3. **Capability-first:** Prefer native AI abilities, existing Skills, connected Plugins and ready-made tools. **Build nothing new by default.**
-4. **Skill–Tool Fit:** Before an important action, choose the smallest appropriate method and tool. Verify access when needed.
+4. **Skill–Tool Fit:** For **every AOM task**, choose the required method/skill and suitable tool (including **no extra Skill/tool** where that is the best route) before using resources; perform a proportionate routing check before each meaningful external step, and re-select when evidence, constraints or availability change.
 5. **Skip blocked tools:** If a connection fails, record that fact and continue with the next viable route. Do not troubleshoot unless the goal explicitly requires it.
 6. **Evidence labels:** Distinguish `FACT`, `INFERENCE`, `HYPOTHESIS`, and `UNKNOWN`. No fabricated ROI, conversion, or performance scores.
 7. **Observe real outcomes:** A tool call succeeding is not proof a business objective was achieved.
 8. **Protect boundaries:** This is a public experimental repository. Do not publish private customer information, account data, secrets, or non-public analytics. Destructive, external or irreversible changes require separate authorization.
+
+## Required Skill–Tool Routing Gate — every task
+
+**Target behavior:** For every task handled under AOM's operating instructions, make an **explicit internal choice of METHOD/SKILL + TOOL + EXECUTION MODE**, not a habitual choice based on the last task. “Skill” may mean a native reasoning/work method; an installable skill package is **optional**. “Tool” may legitimately be **NONE** for tasks best completed natively. The goal is an *appropriately capable, compatible, authorized and resource-efficient pair*, not maximum number of tools used.
+
+**Run this small gate before information gathering and again before any meaningful external action; re-run it whenever facts, authorization, tools or task objective materially change.** For trivial, clear tasks, the gate can take one sentence internally; never enumerate the entire tool market without a reason.
+
+1. **Outcome / Success:** What user outcome matters? Is action actually needed? What is the baseline, resource budget, authorization scope and proof of success?
+2. **Capability / Method:** Which specialist method is really necessary (evidence verification, code review, Git operations, spreadsheet formulas, statistical analysis, content writing, etc.)? Can the model's current native capability meet the objective without extra tools?
+3. **Available Skill:** Prefer a suitable currently installed/connected Skill and read its instructions *when relevant*. If none fits, use the appropriate native method rather than fabricating a Skill. Distinguish method competence from packaging.
+4. **Available Tool:** Match the chosen method to a working tool that can deliver the required read/write/verification. Check whether the tool is present and authorized in **this session**. Prefer connected first-party/specialist apps. If a capability gap remains, search GitHub as the first open-source discovery source; a discovered repo is **not** a connected or trusted tool. Also consider ready-made external services if better.
+5. **Fit / Total cost:** Reject incompatible Skill–Tool pairs, inadequate permissions, unsafe sources, and routes that cost more than their incremental value. Compare required accuracy, latency, human time, tokens, money, license, maintenance, reversibility and alternatives (including **DO NOTHING**). Do not invent monetary estimates or numerical scores.
+6. **Route / Act / Verify:** Pick one route with `DO / TEST / WATCH / DROP` and state `SKILL/METHOD → TOOL/MODE → ACCEPTANCE CHECK`. Execute only within approval. After an external change, read back the actual result from its destination. If a connector is broken, mark `BLOCKED` and **SKIP** to the next viable existing route rather than looping through repair.
+7. **Learn / Re-select:** Record a routing lesson only if useful: Was the chosen pair sufficient? Did permissions or availability change? Was another available path measurably better? Re-run the gate at the next consequential step as needed.
+
+**Minimum routing record (five short fields, for consequential tasks):**
+```text
+GOAL / PASS:        desired result and how to verify it
+SKILL / METHOD:     native method or exact relevant installed Skill (otherwise NONE)
+TOOL / MODE:       selected available connector/native tool, or NONE; access CONFIRMED / UNTESTED / BLOCKED
+FIT / ALTERNATIVE: reason the pair beats the next viable path, including burden and risk
+EVIDENCE / FALLBACK: source-of-truth check and alternative if unavailable
+```
+
+**Read-only example routes — illustrative, not an assertion of access in future sessions:**
+- **Explain a concept / make a simple choice:** native reasoning/evidence method → **NONE**; no external tool unless freshness/facts require it.
+- **Modify a Google Sheet when authorized:** installed Google Sheets Skill (if available in the session) → connected Google Drive/Sheets action → verify exact updated range. Do not substitute a generic code tool merely because it is familiar.
+- **Inspect a GitHub repository:** native software/repository-audit method → connected GitHub read actions → cite exact file/commit; no custom GitHub Skill needed.
+- **Find a new open-source capability:** requirements and risk-review method → GitHub repository search/read **for discovery only** → check upstream/license/security and feasible setup; don't install or run unknown code just because it exists.
+- **External system update where authorization is absent:** choose the assessment method, mark execution `NOT_AUTHORIZED`; no write action.
+
+**Verification target:** Across a varied set of *user-initiated* tasks, every task should exhibit the appropriate route or an explicit `NO_EXTRA_SKILL/NO_EXTRA_TOOL`, no invented installed skills, no invented connector access, no missing readback on actual external writes, and no unnecessary GitHub search when native/existing tools suffice. A written rule alone is **STRUCTURAL**, not evidence of universal reliability; test real routing behavior separately.
+
+**Activation boundary:** This Markdown governs a run **when actually loaded/applied as AOM context**. Merely saving it on GitHub does not automatically install it, make it run in every new chat, or guarantee 100% tool-selection accuracy. No new Skill, Plugin, agent, scheduler or service is required by this rule.
 
 ## Tool Discovery — GitHub-first when existing capabilities are insufficient
 
@@ -50,11 +84,13 @@ Goal / constraint
       ↓
 Baseline (what would have happened otherwise)
       ↓
+Choose METHOD/SKILL + TOOL for evidence gathering (or NONE)
+      ↓
 Discover 3–5 options → Validate evidence → Compare opportunity cost
       ↓
 DO / TEST / WATCH / DROP
       ↓
-Skill + Tool selection (native → available connectors → build-last)
+Re-select METHOD/SKILL + TOOL for authorized action (native → existing tools → GitHub discovery if gap → build-last)
       ↓
 Run the smallest safe test → Verify externally → Record observed cost/outcome
       ↓
