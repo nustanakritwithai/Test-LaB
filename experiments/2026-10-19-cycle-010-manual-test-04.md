@@ -112,7 +112,7 @@ Invest only if p > 2/(H−1) (strict).
 | episode sign counts | PASS |
 | paired totals agree | PASS |
 
-**13/13 invariants passed.** Counts and empirical payoffs were computed after the pre-registration commit was written and read back.
+**13/13 invariants passed.** Counts and empirical payoffs were computed after the pre-registration commit was written and read back. **Independent Python cross-check:** Recomputed the same xorshift32 sequence and 1,800 outcomes separately; reproduced CALIBRATED total uplift **+1504**, OVERSTATED total uplift **−624**, and final PRNG state **3281356059** exactly. This cross-language consistency verifies arithmetic, not external predictive validity.
 
 ### Reproduction outline (no external dependencies)
 
