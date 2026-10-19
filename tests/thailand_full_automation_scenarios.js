@@ -27,8 +27,8 @@ const FACTS=Object.freeze([
    scope:'THAI_EMPLOYED_PERSONS_LFS',attribution:'NSO Labor Force Survey Q2 2026',
    sourceType:'DIRECT_NSO_PUBLICATION',sourceId:'NSO_Q2_2026_EMPLOYED',
    published:'2026-07-27',factType:'SOURCE_REPORTED_STATISTIC'},
- {id:'NSO_Q2_2026_MANUFACTURING',value:9.16,unit:'million_people',year:2026,period:'Q2_2026',
-   scope:'THAI_EMPLOYED_PERSONS_LFS',attribution:'NSO Labor Force Survey Q2 2026',
+ {id:'NSO_Q2_2026_PRODUCTION_SECTOR',value:9.16,unit:'million_people',year:2026,period:'Q2_2026',
+   scope:'THAI_EMPLOYED_PERSONS_LFS',attribution:'NSO Labor Force Survey Q2 2026, grouped PRODUCTION (not manufacturing only)',
    sourceType:'DIRECT_NSO_PUBLICATION',sourceId:'NSO_Q2_2026_EMPLOYED',
    published:'2026-07-27',factType:'SOURCE_REPORTED_STATISTIC'},
  {id:'NSO_Q2_2026_SERVICES_TRADE',value:20.70,unit:'million_people',year:2026,period:'Q2_2026',
@@ -139,7 +139,7 @@ function baselineGate(additionalClaims=[]){
    if(fact.factType==='REGIONAL_AGGREGATE_NOT_THAILAND')warnings.push('IMF_NOT_THAILAND_EXPOSURE_RATE');
  }
  const total=getFact('NSO_Q2_2026_EMPLOYED').value;
- const sectorSum=['NSO_Q2_2026_AGRI','NSO_Q2_2026_MANUFACTURING','NSO_Q2_2026_SERVICES_TRADE'].reduce((n,id)=>n+getFact(id).value,0);
+ const sectorSum=['NSO_Q2_2026_AGRI','NSO_Q2_2026_PRODUCTION_SECTOR','NSO_Q2_2026_SERVICES_TRADE'].reduce((n,id)=>n+getFact(id).value,0);
  if(!close(total,sectorSum))errors.push('Q2_SECTOR_SUM_MISMATCH');
  const informal=safeShare(getFact('NSO_INFORMAL_2025'),getFact('NSO_INFORMAL_DENOMINATOR_2025'));
  if(informal.status!=='VALID_SAME_SAMPLE'||!close(Math.round(informal.fraction*1000)/10,52.4))
@@ -149,7 +149,7 @@ function baselineGate(additionalClaims=[]){
  return {status:errors.length?'DATA_BLOCKED':'SOURCE_ATTRIBUTED_BASELINE_READY',
    asOf:AS_OF,claimCount:FACTS.length,errors,warnings,
    measures:{employedQ2_2026:total,agricultureQ2_2026:getFact('NSO_Q2_2026_AGRI').value,
-     manufacturingQ2_2026:getFact('NSO_Q2_2026_MANUFACTURING').value,
+     productionSectorQ2_2026:getFact('NSO_Q2_2026_PRODUCTION_SECTOR').value,
      servicesQ2_2026:getFact('NSO_Q2_2026_SERVICES_TRADE').value,
      informalYear2025:getFact('NSO_INFORMAL_2025').value,
      informalPercent2025:getFact('NSO_INFORMAL_RATE_2025').value,
@@ -306,6 +306,10 @@ function runTests(){
      period:'Q2_2026',scope:'THAILAND',attribution:'fixture',
      factType:'SOURCE_REPORTED_STATISTIC',published:'2026-10-01'}]).status==='DATA_BLOCKED');
  test('sector employment adds to NSO employed Q2',close(11.65+9.16+20.70,41.51));
+ test('Official grouped production sector is NOT factory manufacturing subclass',
+   getFact('NSO_Q2_2026_PRODUCTION_SECTOR').value===9.16&&
+   !FACTS.some(x=>x.id==='NSO_Q2_2026_MANUFACTURING'));
+
  test('NSO 2025 informal denominator agrees',close(Math.round(20.9/39.9*1000)/10,52.4));
  test('cannot mix NSO 2025 and NSO 2026 denominators',
    safeShare(getFact('NSO_INFORMAL_2025'),getFact('NSO_Q2_2026_EMPLOYED')).status==='DENOMINATOR_MISMATCH');
