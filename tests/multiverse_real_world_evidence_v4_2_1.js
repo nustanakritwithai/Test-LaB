@@ -79,6 +79,8 @@ function validateClaim(claim,registry=SOURCE_REGISTRY,asOf=AS_OF){
     failures.push('SOURCE_NOT_CHECKED');
   if(!source.readback?.locator||!source.readback.locator.trim())
     failures.push('SOURCE_LOCATOR_MISSING');
+  if(!exactDay(source.readback?.reviewedDay))
+    failures.push('SOURCE_REVIEW_DAY_MISSING_OR_INVALID');
   if(!source.readback?.supportedClaimIds?.includes(claim.id))
     failures.push('CLAIM_NOT_SUPPORTED_BY_READBACK_RECORD');
   if(!exactDay(source.publishedDay)||!exactDay(claim.publishedDay)||!exactDay(claim.eventDay))
@@ -106,6 +108,15 @@ function validateClaim(claim,registry=SOURCE_REGISTRY,asOf=AS_OF){
   if(claim.kind==='ATTRIBUTED_METRIC'&&
     (!claim.metric||typeof claim.value!=='number'||!Number.isFinite(claim.value)))
     failures.push('METRIC_VALUE_OR_DEFINITION_MISSING');
+  if(claim.kind==='ATTRIBUTED_METRIC'&&
+     ['ATTENDANCE','ARREST_COUNT_CUMULATIVE'].includes(claim.metric)&&
+     Number.isFinite(claim.value)&&
+     (!Number.isSafeInteger(claim.value)||claim.value<0))
+    failures.push('COUNT_MUST_BE_NONNEGATIVE_INTEGER');
+  if(exactDay(claim.eventDay)&&exactDay(scope.windowStart)&&
+     exactDay(scope.windowEnd)&&
+     (claim.eventDay<scope.windowStart||claim.eventDay>scope.windowEnd))
+    failures.push('EVENT_DAY_OUTSIDE_MEASURED_WINDOW');
   if(claim.kind==='ANNOUNCED_FUTURE_EVENT'&&claim.eventDay<=asOf)
     warnings.push('ANNOUNCEMENT_NOT_EVIDENCE_OF_EVENT_COMPLETION');
   if(failures.length>0)return errorResult('DATA_BLOCKED',failures,warnings);
@@ -135,8 +146,18 @@ function compareMetrics(a,b){
     return {status:'DIFFERENT_SCOPE'};
   if(a.scope?.windowStart!==b.scope?.windowStart||a.scope?.windowEnd!==b.scope?.windowEnd)
     return {status:'DIFFERENT_OBSERVATION_WINDOWS'};
-  if(a.originGroup===b.originGroup)
+  if(a.originGroup===b.originGroup){
+    // A source revision (or contradicting reports attributed to the same
+    // original origin) is NOT simply an independent confirmation or echo.
+    if(a.value!==b.value)
+      return {status:'SAME_ORIGIN_REPORT_REVISION_CONFLICT',
+        independentOriginalOrigins:1,
+        originalOriginGroup:a.originGroup,
+        values:[{sourceId:a.sourceId,value:a.value},
+          {sourceId:b.sourceId,value:b.value}],
+        consensusValue:null};
     return {status:'DEPENDENT_SOURCE_ECHO',independentOriginalOrigins:1};
+  }
   if(a.value!==b.value)
     return {status:'DIFFERENT_ATTRIBUTED_ESTIMATES',independentOriginalOrigins:2,
       values:[{sourceId:a.sourceId,attributor:a.attributor,value:a.value},
@@ -272,6 +293,14 @@ function selfTests(){
   test('Same government number copied by a second newspaper is dependent',
     compareMetrics(CLAIM_FIXTURES[0],CLAIM_FIXTURES[2]).status==='DEPENDENT_SOURCE_ECHO');
   test('Independent attribution groups deduplicated',all.uniqueAttributionGroups===7);
+  test('Original-origin changed number is revision conflict, not harmless source echo',
+    compareMetrics(CLAIM_FIXTURES[0],
+      {...CLAIM_FIXTURES[2],value:540000}).status==='SAME_ORIGIN_REPORT_REVISION_CONFLICT');
+  test('Original-origin changed number never becomes falsely independent',
+    compareMetrics(CLAIM_FIXTURES[0],
+      {...CLAIM_FIXTURES[2],value:540000}).independentOriginalOrigins===1);
+  test('Different-origin numeric comparison still keeps conflicting sources',
+    compareMetrics(CLAIM_FIXTURES[0],CLAIM_FIXTURES[1]).values.length===2);
   test('Arrest figure windows do not get false contradiction',
     compareMetrics(CLAIM_FIXTURES[3],CLAIM_FIXTURES[4]).status==='DIFFERENT_OBSERVATION_WINDOWS');
   test('Upcoming October 24 call is not a realized event',
@@ -294,6 +323,10 @@ function selfTests(){
     SOURCE_REGISTRY.every(x=>x.readback.urlAtRead===x.url));
   test('Missing readback locator fails closed',
     validateClaim(CLAIM_FIXTURES[0],[{...SOURCE_REGISTRY[0],readback:{...SOURCE_REGISTRY[0].readback,locator:''}}]).failures.includes('SOURCE_LOCATOR_MISSING'));
+  test('Source readback without audit day cannot pass',
+    validateClaim(CLAIM_FIXTURES[0],[{...SOURCE_REGISTRY[0],readback:{...SOURCE_REGISTRY[0].readback,reviewedDay:null}}]).failures.includes('SOURCE_REVIEW_DAY_MISSING_OR_INVALID'));
+  test('Invalid source review date cannot pass',
+    validateClaim(CLAIM_FIXTURES[0],[{...SOURCE_REGISTRY[0],readback:{...SOURCE_REGISTRY[0].readback,reviewedDay:'2026-02-31'}}]).failures.includes('SOURCE_REVIEW_DAY_MISSING_OR_INVALID'));
   test('Claim with valid source but no supporting passage blocked',
     validateClaim({...CLAIM_FIXTURES[0],id:'INVENTED'}).failures.includes('CLAIM_NOT_SUPPORTED_BY_READBACK_RECORD'));
   test('Published after point cutoff is temporal leak',
@@ -306,6 +339,14 @@ function selfTests(){
     validateClaim(CLAIM_FIXTURES[0],[{...SOURCE_REGISTRY[0],publishedDay:'2026-10-21'}]).failures.includes('TEMPORAL_LEAK'));
   test('Broken metric scope blocked',
     validateClaim({...CLAIM_FIXTURES[0],scope:{...national,windowEnd:'2026-10-16'}}).failures.includes('METRIC_SCOPE_OR_WINDOW_INVALID'));
+  test('Even valid observation window cannot exclude its claimed event day',
+    validateClaim({...CLAIM_FIXTURES[0],scope:{...national,windowStart:'2026-10-18',windowEnd:'2026-10-19'}}).failures.includes('EVENT_DAY_OUTSIDE_MEASURED_WINDOW'));
+  test('Future planned event claim must use matching scheduled observation window',
+    validateClaim({...CLAIM_FIXTURES[5],scope:{...CLAIM_FIXTURES[5].scope,windowStart:'2026-10-17',windowEnd:'2026-10-19'}}).failures.includes('EVENT_DAY_OUTSIDE_MEASURED_WINDOW'));
+  test('Reject negative counts even if numeric field is present',
+    validateClaim({...CLAIM_FIXTURES[0],value:-550000}).failures.includes('COUNT_MUST_BE_NONNEGATIVE_INTEGER'));
+  test('Reject fractional arrest/person counts',
+    validateClaim({...CLAIM_FIXTURES[3],value:1200.5}).failures.includes('COUNT_MUST_BE_NONNEGATIVE_INTEGER'));
   test('Attribution without origin group blocked',
     validateClaim({...CLAIM_FIXTURES[0],originGroup:null}).failures.includes('ORIGINAL_ATTRIBUTION_MISSING'));
   test('City and national scope are not comparable',
