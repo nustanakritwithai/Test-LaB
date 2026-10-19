@@ -74,14 +74,14 @@ function rootsAsObserved(observations){
        actualFixtureNextCash:actualNext.cash,
        posteriorBefore:[s.alpha,s.beta],posteriorAfter:[actualNext.alpha,actualNext.beta],
        eventOrigin:'SYNTHETIC_FIXTURE_NOT_REAL_WORLD'};
-   s=actualNext;
+   s={...actualNext,remaining:CONFIG.horizon}; // Receding horizon: every observed point becomes a fresh root
  }
 }
 const initial=start();const old=JSON.stringify(initial);const tree=rollout(initial);const m=count(tree);
 const successBranch=tree.alternatives.find(a=>a.action==='PROBE').branches.find(b=>b.outcome==='SUCCESS');
 const failureBranch=tree.alternatives.find(a=>a.action==='PROBE').branches.find(b=>b.outcome==='FAILURE');
-const routeA=rootsAsObserved(['SUCCESS','FAILURE']);
-const routeB=rootsAsObserved(['SUCCESS','SUCCESS','FAILURE','FAILURE']);
+const routeA=rootsAsObserved(['SUCCESS','FAILURE','FAILURE']);
+const routeB=rootsAsObserved(['SUCCESS','SUCCESS','FAILURE','FAILURE','FAILURE']);
 const routeC=rootsAsObserved(['FAILURE']);
 const paused=rootsAsObserved([]);
 const missing=rootsAsObserved(['UNKNOWN_EVENT']);
@@ -105,21 +105,27 @@ check('Virtual children are marked hypothetical',successBranch.child.state.mode=
 check('S2 chooses commit after success',successBranch.child.choice==='COMMIT');
 check('S2 chooses stop after failure',failureBranch.child.choice==='STOP');
 check('Multiverse expansion does not mutate observed initial root',JSON.stringify(initial)===old);
-check('Route A new roots use revised policies',JSON.stringify(routeA.history.map(x=>x.choice))==='["PROBE","COMMIT","STOP"]');
-check('Route A includes three independently expanded roots',routeA.history.length===3&&routeA.history.every(x=>x.explored.decision>0));
+check('Route A new roots use revised policies',JSON.stringify(routeA.history.map(x=>x.choice))==='["PROBE","COMMIT","PROBE","STOP"]');
+check('Route A includes four independently expanded roots',routeA.history.length===4&&routeA.history.every(x=>x.explored.decision>0));
 check('Route A after positive probe has posterior (2,1)',routeA.history[1].alpha===2&&routeA.history[1].beta===1);
 check('Route A after commitment failure has posterior (2,2)',routeA.history[2].alpha===2&&routeA.history[2].beta===2);
 check('Route A cash after losses is 69',routeA.history[2].cash===69);
+check('Route A S4 posterior (2,3) with cash 68',routeA.history[3].alpha===2&&routeA.history[3].beta===3&&routeA.history[3].cash===68);
 check('Route A completes with STOP',routeA.status==='STOP');
-check('Route B repeats for five decision roots',routeB.history.length===5);
-check('Route B policy sequence changes with evidence',JSON.stringify(routeB.history.map(x=>x.choice))==='["PROBE","COMMIT","COMMIT","COMMIT","STOP"]');
-check('Route B last posterior is Beta(3,3) cash 59',routeB.history[4].alpha===3&&routeB.history[4].beta===3&&routeB.history[4].cash===59);
+check('Route B repeats for six decision roots',routeB.history.length===6);
+check('Route B policy sequence changes with evidence',JSON.stringify(routeB.history.map(x=>x.choice))==='["PROBE","COMMIT","COMMIT","COMMIT","PROBE","STOP"]');
+check('Route B learns Beta(3,3) with cash 59',routeB.history[4].alpha===3&&routeB.history[4].beta===3&&routeB.history[4].cash===59);
+check('Route B last posterior is Beta(3,4) cash 58',routeB.history[5].alpha===3&&routeB.history[5].beta===4&&routeB.history[5].cash===58);
 check('Route C re-evaluates after negative probe',routeC.history[1].choice==='STOP'&&routeC.history[1].beta===2);
 check('Without an observed outcome system waits instead of inventing evidence',paused.status==='WAIT_FOR_OBSERVATION'&&paused.history.length===1&&!paused.history[0].observedFixtureEvent);
 check('Unknown outcome fails without fabricated posterior',missing.status==='MODEL_MISS'&&missing.history.length===1&&!missing.history[0].observedFixtureEvent);
 check('Actual resource constraint blocks COMMIT after poor cash',!poorCash.alternatives.some(a=>a.action==='COMMIT'));
 check('Terminal point does not make spurious decisions',terminal.kind==='HORIZON'&&terminal.choice===null);
 check('Point 2 forecast is observation-conditional, never lucky-leaf',routeA.history[0].predictions.find(a=>a.action==='PROBE').nextOutcomes.length===2);
+check('Every observed decision root replans with fresh horizon 5',routeB.history.every(x=>x.horizon===CONFIG.horizon));
+check('Simulated branch successor consumes one planning horizon step',successBranch.child.state.remaining===CONFIG.horizon-1);
+check('After real-fixture evidence, S3 can choose PROBE instead of terminal STOP',routeA.history[2].choice==='PROBE');
 check('Observed trace uses only fixture observations, not virtual branch observations',routeB.history.every(x=>x.mode==='OBSERVED_FIXTURE'));
+check('Route B eventually terminates through selected STOP',routeB.status==='STOP');
 check('No real-world action or external money involved',routeA.history.every(x=>!x.observedFixtureEvent||x.observedFixtureEvent.eventOrigin==='SYNTHETIC_FIXTURE_NOT_REAL_WORLD'));
 console.log(JSON.stringify({status:'PASS',checks:checks.length,metrics:m,root:{choice:tree.choice,value:tree.value},routeA:routeA.history.map(x=>({point:x.point,belief:x.alpha+':'+x.beta,cash:x.cash,decision:x.choice,pSuccess:x.pSuccess,value:x.rootValue,exploredDecisionNodes:x.explored.decision})),routeB:routeB.history.map(x=>({point:x.point,belief:x.alpha+':'+x.beta,cash:x.cash,decision:x.choice})),routeC:routeC.history.map(x=>({point:x.point,belief:x.alpha+':'+x.beta,cash:x.cash,decision:x.choice})),paused:paused.status,missing:missing.status,poorCashActions:poorCash.alternatives.map(a=>a.action),tests:checks},null,2));
