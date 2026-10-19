@@ -6,6 +6,14 @@
 > **Control:** Manual, on-demand. No recurring automation enabled by this roadmap.
 > **Architecture override (2026-10-20):** [Independent Development Policy](INDEPENDENT_DEVELOPMENT_POLICY.md) supersedes every previous plan to merge AOM, Multiverse, or other Skills. Each is developed separately; no AOM→Multiverse dependency or unified Skill is allowed.
 
+## Active focus: Skill–Tool Selection (2026-10-20)
+
+**ACTIVE USER DIRECTIVE:** Improve AOM V0.3's practical selection of appropriate **Method → installed Skill (or NO_EXTRA_SKILL) → available Tool (or NO_EXTRA_TOOL)** and evidence-based verification. This temporarily **supersedes older task priorities below**, including the earlier P1 historical replay marked `DO NEXT` and business/ROI work. Historical content is kept for traceability, **not as a command to execute next**.
+
+**Current small next step:** Audit conflicting Skill triggers and project scope against instructions that are actually installed; correct documented precedence if needed, test a small authorized Test-LaB Markdown edit with GitHub destination readback, and record both action provenance and what remains unverified. Follow-up tests should prefer distinct user-originated technical tasks over self-authored fixture success claims.
+
+**Not authorized in this focus:** Business evaluation, publishing/production account changes, background watches, new Skill/Plugin/framework installation, or mandatory Multiverse integration. **AOM V0.3 File Library original remains unchanged.**
+
 ## 1. Objective and current verified baseline
 
 **Primary objective:** Increase the quality of choosing the *next opportunity*, not the number of generated artifacts or complexity of AI infrastructure. Measure actual decision utility against a credible alternative and count human effort, tool calls, time, money and risk where measurable.
@@ -24,12 +32,14 @@
 
 ## 2. Opportunity ranking (why this order)
 
+> The following ranking records an earlier broad roadmap. The **Active focus** above and §9 are controlling during the current user-requested Skill–Tool routing work.
+
 | Rank | Opportunity | Value / evidence gained | Cost and risk | Decision |
 |---|---|---|---|---|
-| **P1** | Public real-event historical replay with strict time cutoffs | Tests temporal information discipline, tool selection, forecasts against real recorded events with no production side effects | Small GitHub read budget; historical data leakage must be controlled | **DO NEXT** |
+| **P1** | Public real-event historical replay with strict time cutoffs | Tests temporal information discipline, tool selection, forecasts against real recorded events with no production side effects | Small GitHub read budget; historical data leakage must be controlled | **DEFERRED (active routing focus)** |
 | **P2** | On-demand decision-answer benchmark from varied concrete user problems | Tests whether decisions are actionable and grounded, not just mathematically internally consistent | Needs independent case labels / user feedback where possible | **TEST** |
 | **P3** | Replan after actual, unique observations; quality measurement | Tests continuity and calibration rather than merely writing forecasts | Outcomes can be slow and ambiguous | **TEST after evidence available** |
-| **P4** | Measure net incremental value and implement stop conditions | Avoids optimizing low-value improvements; observes total opportunity cost | Attribution and human-effort measurement may be limited | **DO across all stages** |
+| **P4** | Measure net incremental value and implement stop conditions | Avoids optimizing low-value improvements; observes total opportunity cost | Attribution and human-effort measurement may be limited | **DEFERRED (business/value measurement)** |
 | **P5** | Reversible field decision under separate explicit authorization | Necessary eventually for real causal claims | Real-world consequences, potential project disruption | **WAIT** |
 | — | Convert to Skill / write an agent framework / automate everything | Convenience only; quality or payoff advantage not established | Creation, maintenance and extra control surface | **DROP FOR NOW** |
 
@@ -125,17 +135,17 @@ If no safe comparable field intervention is available, remain in read-only mode 
 
 Use GitHub history to trace changes. Keep public documents free of credentials, private analytics, personally identifying data, unpublished work and fabricated results. When in doubt about publishability, keep details in the private conversation instead.
 
-## 9. Immediate next manually commanded run
+## 9. Current manually commanded run — Skill–Tool routing
 
-**Proposed next task:** `P1 / Historical Replay — protocol only`.
+**Selected work:** Technical routing evaluation with explicit Skill scope/trigger disambiguation, not the older historical replay or business optimization.
 
-1. Discover suitable existing public GitHub event sources read-only.
-2. Choose an explicit historical cutoff and valid later evaluation horizon **without opening future outcomes**.
-3. Freeze baseline, candidate AOM policy, tool-call cap and scoring rules in a pre-registration MD.
-4. Stop. On the user's next command, run the actual blinded-as-feasible replay, record limitations and read back the report from GitHub.
-5. If the dataset cannot be reconstructed faithfully, mark `UNVERIFIABLE`, select another existing source only after documenting why, and avoid repetitive tool troubleshooting.
+1. Read the current AOM File Library source where needed, this ROADMAP, README gate, independent policy, and only applicable installed Skill instructions; preserve authority/source identity.
+2. Test **negative matches**: `@document` opt-in versus generic Markdown; Google Docs/Sheets native destinations; project-specific KB Skills versus Test-LaB; and `NO_EXTRA_SKILL` where specialized instructions do not fit.
+3. Use **an actual authorized Test-LaB Markdown correction** as a real output route; read back the GitHub blob and commit. Do not use Google Drive or WordPress just because they expose powerful editing tools.
+4. Compare against a credible alternative qualitatively; document how many actual underlying actions occurred where observable. Structural check passes are **not** a performance or time/token improvement claim.
+5. Record only evidence-backed learning in `experiments/` when it meaningfully changes the next routing decision. No independent field claim until genuinely new user-originated tasks support it.
 
-**No dates, background scheduling, commercial writes or unapproved operations are initiated by the roadmap.**
+**Earlier proposal, now deferred:** `P1 / Historical Replay` is retained in §3 as a historical plan only. No workflow is activated without a new user direction; no automation, business/ROI tests, cross-Skill merger or production write is authorized.
 
 ## 10. Roadmap success definition
 
