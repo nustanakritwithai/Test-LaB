@@ -39,7 +39,7 @@ const FACTS=Object.freeze([
    scope:'EMPLOYED_PERSONS_INFORMAL_CLASSIFICATION',attribution:'NSO Informal Labour Survey 2025',
    url:'https://www.nso.go.th/public/e-book/Analytical-Reports/Income%20transition/12/',
    sourceType:'DIRECT_NSO_PUBLICATION',support:'NSO income and working-hours analysis (2025 survey)',
-   published:'2026-01-01',publicationDatePrecision:'YEAR_APPROXIMATE_NOT_FOR_CUTOFF',
+   published:null,publicationDatePrecision:'UNVERIFIED_EXACT_DATE_BEFORE_CUTOFF',
    factType:'SOURCE_REPORTED_STATISTIC'},
  {id:'NSO_INFORMAL_RATE_2025',value:52.4,unit:'percent',year:2025,
    period:'NSO_2025_INFORMAL_SURVEY',scope:'EMPLOYED_PERSONS_INFORMAL_CLASSIFICATION',
@@ -54,8 +54,8 @@ const FACTS=Object.freeze([
    url:'https://www.nso.go.th/public/e-book/Statistical-Yearbook/SYB-2026_webPage/Page_SYB_TH.html',
    sourceType:'DIRECT_NSO_PUBLICATION',
    attribution:'NSO Statistical Yearbook 2026, 2025 registered age group',
-   support:'NSO annual yearbook indexed extract',published:'2026-06-01',
-   publicationDatePrecision:'MONTH_APPROXIMATE_NOT_FOR_CUTOFF',factType:'SOURCE_REPORTED_STATISTIC'},
+   support:'NSO annual yearbook indexed extract',published:null,
+   publicationDatePrecision:'UNVERIFIED_EXACT_DATE_BEFORE_CUTOFF',factType:'SOURCE_REPORTED_STATISTIC'},
  {id:'NSO_ELDER_SHARE_2025',value:21.7,unit:'percent',year:2025,
    period:'REGISTERED_POPULATION_2025',scope:'THAILAND_POPULATION',
    sourceId:'NSO_ELDER_60PLUS_2025',attribution:'NSO Statistical Yearbook 2026',
@@ -126,6 +126,15 @@ function baselineGate(){
    if(typeof fact.value!=='number'||!Number.isFinite(fact.value))errors.push('NON_NUMERIC_FACT_'+fact.id);
    if(!fact.year||fact.year>2026)errors.push('OUT_OF_CUTOFF_YEAR_'+fact.id);
    if(!fact.period||!fact.scope||!fact.attribution||!fact.factType)errors.push('PROVENANCE_GAP_'+fact.id);
+   if(!fact.url&&!fact.sourceId)errors.push('SOURCE_URL_OR_PARENT_MISSING_'+fact.id);
+   if(fact.published!==undefined&&fact.published!==null){
+     if(typeof fact.published!=='string'||fact.published>AS_OF)
+       errors.push('SOURCE_PUBLICATION_AFTER_CUTOFF_'+fact.id);
+   }else if(fact.publicationDatePrecision==='UNVERIFIED_EXACT_DATE_BEFORE_CUTOFF'){
+     warnings.push('SOURCE_EXACT_PUBLICATION_DATE_UNKNOWN_'+fact.id);
+   }else if(!fact.sourceId){
+     errors.push('PRIMARY_SOURCE_PUBLICATION_DATE_MISSING_'+fact.id);
+   }
    if(fact.factType==='REGIONAL_AGGREGATE_NOT_THAILAND')warnings.push('IMF_NOT_THAILAND_EXPOSURE_RATE');
  }
  const total=getFact('NSO_Q2_2026_EMPLOYED').value;
@@ -276,6 +285,12 @@ function runTests(){
  test('as of cutoff 2026-10-20',AS_OF==='2026-10-20');
  test('S0 official cited baseline ready',gate.status==='SOURCE_ATTRIBUTED_BASELINE_READY');
  test('no baseline fact numerical fields missing',gate.errors.length===0);
+ test('undated NSO sources remain warnings, not invented dated evidence',
+   gate.warnings.includes('SOURCE_EXACT_PUBLICATION_DATE_UNKNOWN_NSO_INFORMAL_2025')&&
+   gate.warnings.includes('SOURCE_EXACT_PUBLICATION_DATE_UNKNOWN_NSO_ELDER_60PLUS_2025'));
+ test('primary source records always trace to a URL',FACTS.every(f=>f.url||f.sourceId));
+ test('future source publication blocked at the baseline gate',
+   FACTS.every(f=>!f.published||f.published<=AS_OF));
  test('sector employment adds to NSO employed Q2',close(11.65+9.16+20.70,41.51));
  test('NSO 2025 informal denominator agrees',close(Math.round(20.9/39.9*1000)/10,52.4));
  test('cannot mix NSO 2025 and NSO 2026 denominators',
