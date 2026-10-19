@@ -120,9 +120,10 @@ function countryExposureCheck(f,requestedCountry){
    return {status:'NOT_THAI_POPULATION',nationalProjection:null};
  return {status:'NEEDS_COUNTRY_SPECIFIC_EVIDENCE',nationalProjection:null};
 }
-function baselineGate(){
+function baselineGate(additionalClaims=[]){
  const errors=[],warnings=[];
- for(const fact of FACTS){
+ if(!Array.isArray(additionalClaims))throw Error('INVALID_EVIDENCE_INPUT');
+ for(const fact of [...FACTS,...additionalClaims]){
    if(typeof fact.value!=='number'||!Number.isFinite(fact.value))errors.push('NON_NUMERIC_FACT_'+fact.id);
    if(!fact.year||fact.year>2026)errors.push('OUT_OF_CUTOFF_YEAR_'+fact.id);
    if(!fact.period||!fact.scope||!fact.attribution||!fact.factType)errors.push('PROVENANCE_GAP_'+fact.id);
@@ -291,6 +292,19 @@ function runTests(){
  test('primary source records always trace to a URL',FACTS.every(f=>f.url||f.sourceId));
  test('future source publication blocked at the baseline gate',
    FACTS.every(f=>!f.published||f.published<=AS_OF));
+ test('deliberately injected post-cutoff source is blocked by evidence gate',
+   baselineGate([{id:'FUTURE_HINDSIGHT',value:1,unit:'people',year:2026,
+     period:'FUTURE_DAY',scope:'THAILAND',attribution:'fixture',
+     factType:'SOURCE_REPORTED_STATISTIC',url:'https://example.invalid/evidence',
+     published:'2026-10-21'}]).errors.includes('SOURCE_PUBLICATION_AFTER_CUTOFF_FUTURE_HINDSIGHT'));
+ test('deliberately injected missing-origin claim blocks observed baseline promotion',
+   baselineGate([{id:'NO_SOURCE_FIXTURE',value:1,unit:'people',year:2026,
+     period:'Q2_2026',scope:'THAILAND',attribution:'fixture',
+     factType:'SOURCE_REPORTED_STATISTIC',published:'2026-10-01'}]).errors.includes('SOURCE_URL_OR_PARENT_MISSING_NO_SOURCE_FIXTURE'));
+ test('baseline becomes DATA_BLOCKED if provenance injected is invalid',
+   baselineGate([{id:'NO_SOURCE',value:1,unit:'people',year:2026,
+     period:'Q2_2026',scope:'THAILAND',attribution:'fixture',
+     factType:'SOURCE_REPORTED_STATISTIC',published:'2026-10-01'}]).status==='DATA_BLOCKED');
  test('sector employment adds to NSO employed Q2',close(11.65+9.16+20.70,41.51));
  test('NSO 2025 informal denominator agrees',close(Math.round(20.9/39.9*1000)/10,52.4));
  test('cannot mix NSO 2025 and NSO 2026 denominators',
