@@ -1,10 +1,12 @@
 # AI OPPORTUNITY MANAGER — MASTER HANDOFF v1.1
 
+> **CURRENT STATE NOTE — 20 Oct 2026:** This v1.1 Handoff contains historical baseline and a ten-case kickoff mission; do **not** treat the old section 8 as a fresh task. The present user-directed scope is **technical Method → Skill → Tool selection and verification only**. Authority for the AOM operating protocol remains the original `AI_Opportunity_Manager_V0.3.md` in ChatGPT File Library. Use [current README routing gate](README.md), [active ROADMAP scope](ROADMAP.md), and [independent-project boundary](INDEPENDENT_DEVELOPMENT_POLICY.md) for GitHub-side operational details. Archived Multiverse trials are **not** AOM runtime requirements. Business ROI trials, new Skills/Plugins, automation and production writes are out of scope.
+
 **วันที่ส่งต่อ:** 20 ตุลาคม 2026 (Asia/Bangkok)  
 **โครงการ:** AI Opportunity Manager (AOM)  
 **Repository สำหรับทดสอบและบันทึกหลักฐาน:** https://github.com/nustanakritwithai/Test-LaB  
 **สถาปัตยกรรมที่เลือก:** Markdown Operating Instructions + ChatGPT native capabilities + เครื่องมือที่มีอยู่แล้ว  
-**สถานะ:** `READY_FOR_NEXT_MANUAL_ROUTING_EVALUATION / BUSINESS_UPLIFT_UNVERIFIED`  
+**สถานะ:** `CURRENT_SCOPE_ROUTING_ONLY / HISTORICAL_MISSION_SUPERSEDED / GENERALIZATION_UNVERIFIED`  
 **เป้าหมายสูงสุด:** AOM ต้อง **เลือกทักษะหรือ Skill และเครื่องมือที่เหมาะกับงานทุกครั้ง ก่อนลงมือ** โดยใช้ความสามารถที่มีอยู่จริงให้เกิดคุณค่าสุทธิสูงสุด และต้องเลือกไม่ใช้ Skill/Tool เพิ่มได้ด้วย
 
 ---
@@ -36,7 +38,7 @@
 - **หลักฐาน Multiverse:** https://github.com/nustanakritwithai/Test-LaB/blob/main/world-model/CONTINUOUS_MULTIVERSE_v4.md
 - **ตัวอย่างผลวัดย้อนหลังล่าสุด:** `experiments/2026-10-20-cycle-015-aom-vs-multiverse-historical-results.md` และ `experiments/2026-10-20-cycle-016-option-unlock-results.md`
 
-**Conflict resolution สำคัญ:** README บางส่วนยังเขียนว่า Multiverse v4 เป็น active protocol สำหรับงานหลายขั้น แต่เจ้าของโครงการตัดสินใจใหม่อย่างชัดเจนว่า **ให้ AOM V0.3 พัฒนาแยกตามหลักเดิม ไม่รวม Multiverse เป็นกฎบังคับ และไม่เพิ่มความซับซ้อนโดยไม่มีหลักฐานว่าคุ้มค่า** ให้ยึดข้อกำหนดล่าสุดนี้เป็นหลัก โดยคงไฟล์วิจัย Multiverse ไว้ ไม่แก้หรือ merge เงียบ ๆ
+**Conflict resolution (ตรวจแหล่งจริง 20 ตุลาคม 2026):** ข้อความเดิมที่ว่า README ปัจจุบันยังบังคับใช้ Multiverse v4 เป็น active protocol เป็น **OUTDATED DESCRIPTION** ของเวอร์ชันก่อนหน้า ไม่ใช่สถานะของ README ที่อ่านได้ในรอบนี้. [README ปัจจุบัน](README.md) และ [นโยบายแยกโครงการ](INDEPENDENT_DEVELOPMENT_POLICY.md) ระบุว่า AOM/Multiverse พัฒนาแยกกันชัดเจน. หาก Handoff ขัดกับต้นฉบับ AOM V0.3, คำสั่งผู้ใช้ล่าสุด, หรือ ROADMAP ส่วนที่ระบุ ACTIVE ให้ถือ Handoff เป็นข้อมูลส่งต่องานทางประวัติ ไม่ใช่คำสั่งที่มีอำนาจเหนือแหล่งเหล่านั้น. ไม่คัดลอก/รวม Multiverse เข้า AOM.
 
 ## 3. Mandatory Skill–Tool Routing — ทุกงาน
 
@@ -97,6 +99,16 @@
 
 ## 7. Current verified status / Evidence honesty
 
+**Current AOM-only evidence (20 ตุลาคม 2026; แยกผลจริงจากการจำลอง):**
+
+- [การประเมิน 10 กรณี](experiments/2026-10-20-aom-skill-tool-routing-evaluation.md): **10/10 routing decisions documented**, ไม่ใช่ 10 งานจริงที่ผ่านการวัดคุณภาพอย่างอิสระ; รายงานได้แก้ไขการอ้างว่าใช้ Web/Python ใน T02–T03 โดยไม่มี action trace แล้ว (`ERRATUM`).
+- [Technical Routing Results](experiments/2026-10-20-aom-technical-routing-results.md): มีการอ่านเครื่องมือจริงบางกรณี พร้อมการแยก `SOURCE_VERIFIED`, `ROUTE_ONLY` และ comparator ที่ไม่ได้ทำจริง.
+- [Git Tree routing comparison](experiments/2026-10-20-aom-routed-link-audit.md): บนหนึ่ง pinned repository snapshot, การตรวจความมีอยู่ของ 8 paths ใช้ 1 recursive tree read เทียบกับ 8 per-target reads; **ยังไม่ใช่หลักฐานการลดเวลา/Token หรือต้นทุนรวม**.
+- [Shallow Tree / scope fallback](experiments/2026-10-20-aom-shallow-tree-fallback.md): ผลจริงแสดงว่า `truncated=false` ของ non-recursive root ไม่ได้ครอบคลุม nested paths; ต้องใช้ `NOT_ENUMERATED` ก่อนอ่าน subtree/recursive/direct file เพื่อสรุป `ABSENT`.
+- **ข้อจำกัดสำคัญ:** ยังไม่มี matched-budget independent evaluation บนงานผู้ใช้ใหม่ที่เพียงพอให้สรุปว่า AOM เลือกคู่ Skill–Tool ได้เหมาะสมอย่างต่อเนื่อง. จำนวน routing records และ structural assertions **ไม่ใช่ accuracy ของระบบ**.
+
+**Historical checkpoints (เก็บไว้เป็นประวัติ ไม่ใช่การทดสอบใหม่รอบนี้):**
+
 - README ล่าสุดเพิ่ม **Required Skill–Tool Routing Gate — every task**, **GitHub-first Tool Discovery** และได้ GitHub readback แล้ว
 - การตรวจโครงสร้าง Routing Gate **11/11** ผ่านในรอบที่บันทึกก่อนหน้า แต่ **ยังไม่ใช่ benchmark ความถูกต้องของการ routing ในทุกงาน**
 - Multiverse v4 finite toy logic tests ผ่าน 41/41; bounded budget candidate tests ผ่าน 52/52 บนแบบจำลอง; **ไม่ใช่ real-world superiority**
@@ -104,7 +116,9 @@
 - Cycle 016 ใช้ public release history แต่ **utility/effects ของ action เป็นสมมติฐาน**; policy proxy improvement บางกรณีไม่ใช่การวัดผลของ AOM Markdown ที่ลงมือในโลกจริง
 - **ยังไม่มีหลักฐานที่ครอบคลุมว่า AOM เลือก Skill–Tool ได้เหมาะสมทุกครั้ง หรือสร้าง ROI จริงสูงกว่าวิธีเดิม**
 
-## 8. NEXT MISSION — Real Skill–Tool Routing Evaluation
+## 8. HISTORICAL MISSION — Real Skill–Tool Routing Evaluation (KICKOFF SUPERSEDED)
+
+> **Status updated 20 Oct 2026:** Checklist 10 ประเภทด้านล่างเป็นแผนเดิมของ Handoff v1.1. มีรายงานเลือกเส้นทางครบ 10 กรณีแล้ว แต่ **ยังไม่ใช่หลักฐานว่า routing มีความแม่นยำ 100%** และหลายกรณีเป็น scenario-only. ไม่ต้องเริ่ม checklist ทั้งสิบซ้ำโดยอัตโนมัติ. ภารกิจ ACTIVE ต่อไปคือการทดสอบกับงานเทคนิคใหม่ที่ตรวจผลได้จริงตามคำสั่งผู้ใช้ โดยอ่าน [ROADMAP §9](ROADMAP.md) และกฎใน [README](README.md) ก่อนเสมอ. ห้ามกลับไปทำ historical replay หรือ business ROI เพียงเพราะข้อความเก่าใน Handoff.
 
 **อย่าเริ่มด้วยการสร้างกฎหรือเอกสารใหม่** ให้ทดสอบการเลือกเส้นทางตาม README ที่มีอยู่กับโจทย์จริงหลากหลายรูปแบบก่อน
 
@@ -138,6 +152,10 @@
 **อย่าเรียกการผ่าน 10/10 routing record ว่า 100% routing accuracy** จนกว่าจะตรวจความเหมาะสมโดยอิสระและพบหลักฐานผลลัพธ์จริง
 
 **Expected deliverable:** รายงาน Markdown หนึ่งฉบับใน `experiments/` เมื่อทดลองครบ และ readback จาก GitHub; อย่าเปิด automation หรือส่งผลส่วนตัวเข้า public repo
+
+### Current follow-on after the historical checklist
+
+เลือกงานที่มี **real destination, live source, observable outcome** และมีความต่างด้าน source ownership, Skill trigger, permissions หรือ fallback จริง. ตรวจแหล่งอ้างอิงที่ระบุไว้โดยตรง: ต้นฉบับ AOM V0.3 ใช้ File Library; ไฟล์ Markdown ใน Test-LaB ใช้ GitHub Connector. ถ้าพบ Handoff รุ่นเก่ามีคำสั่งขัดกับแหล่งล่าสุด ให้ปรับเฉพาะจุด พร้อมบันทึกหลักฐานที่ GitHub และ `readback`; อย่าสร้างเอกสาร/เครื่องมือเพิ่มเพียงเพื่อเพิ่มจำนวนการทดลอง. **No production actions or background automations.**
 
 ## 9. Minimal response format for an executing agent
 
