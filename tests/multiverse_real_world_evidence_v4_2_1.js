@@ -183,14 +183,12 @@ function analysisModeGate(audit,opts={}){
   if(!documentedCalibration)
     return {mode:'QUALITATIVE_SCENARIOS',status:'NO_QUANTITATIVE_CALIBRATION',
       allowedNumericProbabilities:false,allowedActionCertificate:false};
-  const causal=opts.causalEdges||[];
-  if(!causal.length||causal.some(e=>causalEdgeStatus(e)!=='CAUSAL_EVIDENCE_CANDIDATE_REVIEW_REQUIRED'))
-    return {mode:'QUANTITATIVE_FORECAST',status:'CAUSAL_DECISION_BLOCKED',
-      allowedNumericProbabilities:true,allowedActionCertificate:false};
-  // An attested study would still need an independently identified objective
-  // and ethical review; this offline gate never certifies political choices.
-  return {mode:'QUANTITATIVE_FORECAST',status:'CAUSAL_DECISION_INDEPENDENT_REVIEW_REQUIRED',
-    allowedNumericProbabilities:true,allowedActionCertificate:false};
+  // Four Boolean attestations are not an independent calibration audit.
+  // This offline source-record gate cannot self-certify a numeric forecast.
+  // A separately evaluated, source-audited quantitative module is required.
+  return {mode:'QUALITATIVE_SCENARIOS',
+    status:'QUANTITATIVE_CALIBRATION_INDEPENDENT_REVIEW_REQUIRED',
+    allowedNumericProbabilities:false,allowedActionCertificate:false};
 }
 function scenarioSpace(){
   const first=[],second=[];
@@ -356,6 +354,10 @@ function selfTests(){
     analysisModeGate(all,{calibration:{precommittedForecasts:true}}).mode==='QUALITATIVE_SCENARIOS');
   test('Claimed valid numeric calibration still needs causal proof for action selection',
     analysisModeGate(all,{calibration:{sourceProvenanceVerified:true,precommittedForecasts:true,outOfSampleScored:true,probabilityModelVerified:true}}).allowedActionCertificate===false);
+  test('Four source-claimed calibration flags never independently unlock numeric mode',
+    analysisModeGate(all,{calibration:{sourceProvenanceVerified:true,precommittedForecasts:true,outOfSampleScored:true,probabilityModelVerified:true}}).allowedNumericProbabilities===false);
+  test('Synthetic calibration self-attestation keeps qualitative mode',
+    analysisModeGate(all,{calibration:{sourceProvenanceVerified:true,precommittedForecasts:true,outOfSampleScored:true,probabilityModelVerified:true}}).mode==='QUALITATIVE_SCENARIOS');
   const full=finiteScenarioAudit(49),short=finiteScenarioAudit(19),tiny=finiteScenarioAudit(8);
   test('Original declared S1 grid has 8 combinations',full.declaredS1===8);
   test('Original declared full grid has 32 conditional scenarios',full.declaredPaths===32);
