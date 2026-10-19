@@ -15,6 +15,22 @@
 
 ## Required Skill–Tool Routing Gate — every task
 
+> **Current manual-evaluation focus (2026-10-20):** Improve AOM's choice of method, existing Skill and Tool. Business outcomes, ROI pilots, production writes and new automation are outside this test round. AOM V0.3 remains the main protocol; Multiverse is independent per [Independent Development Policy](INDEPENDENT_DEVELOPMENT_POLICY.md).
+
+### Routing readiness: skill evidence vs tool evidence
+
+Record **separate** states; do not inflate a discovery result into a successful task:
+
+| Layer | Evidence state | What it establishes (not what it implies) |
+|---|---|---|
+| Method | `FIT_IDENTIFIED` / `UNDECIDED` | A working approach was chosen; not a passed outcome |
+| Skill | `NO_EXTRA_SKILL` / `SKILL_LISTED` / `SKILL_INSTRUCTIONS_READ` | A real installed instruction set was found/read; not proof its tool works |
+| Tool | `NO_EXTRA_TOOL` / `TOOL_EXPOSED` / `ACCESS_RESPONDED` / `BLOCKED` | The tool exists or answered an appropriate probe; not proof the target artifact was processed |
+| Execution | `NOT_EXECUTED` / `EXECUTED` / `OUTPUT_VERIFIED` | Only destination readback or an applicable independent check establishes output success |
+| Open source | `DISCOVERED_ONLY` / `REVIEWED` / `TESTED` / `VERIFIED` | Repository discovery, license review, installation, and useful output are different claims |
+
+**Decision order:** define desired native artifact/source and freshness → identify method → read only applicable installed Skill instructions → select the least-complex capable, authorized Tool (or NONE) → check access and output separately → if unavailable, SKIP/re-route once instead of repeatedly debugging. Do not use GitHub discovery if native or connected tools already satisfy the task. Do not add new Skills/Plugins without a demonstrated missing capability. Never mark a simulated outage as an observed connection failure.
+
 **Target behavior:** For every task handled under AOM's operating instructions, make an **explicit internal choice of METHOD/SKILL + TOOL + EXECUTION MODE**, not a habitual choice based on the last task. “Skill” may mean a native reasoning/work method; an installable skill package is **optional**. “Tool” may legitimately be **NONE** for tasks best completed natively. The goal is an *appropriately capable, compatible, authorized and resource-efficient pair*, not maximum number of tools used.
 
 **Run this small gate before information gathering and again before any meaningful external action; re-run it whenever facts, authorization, tools or task objective materially change.** For trivial, clear tasks, the gate can take one sentence internally; never enumerate the entire tool market without a reason.
