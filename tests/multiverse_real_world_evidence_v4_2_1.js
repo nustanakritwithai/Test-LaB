@@ -14,23 +14,23 @@ const AS_OF='2026-10-20',EPS=1e-9;
 const SOURCE_REGISTRY=Object.freeze([
   {id:'REU17',publisher:'Reuters',url:'https://www.reuters.com/world/students-trade-unions-yellow-vests-set-protest-across-france-2026-10-17/',
     publishedDay:'2026-10-17',updatedDay:'2026-10-17',allowedKinds:['ATTRIBUTED_METRIC'],
-    readback:{status:'READ_AND_CHECKED_EXTERNALLY',method:'WEB_OPEN',locator:'L174-L176',reviewedDay:AS_OF,
+    readback:{urlAtRead:'https://www.reuters.com/world/students-trade-unions-yellow-vests-set-protest-across-france-2026-10-17/',status:'READ_AND_CHECKED_EXTERNALLY',method:'WEB_OPEN',locator:'L174-L176',reviewedDay:AS_OF,
       supportedClaimIds:['TURNOUT_GOV','TURNOUT_CGT','ARREST17']}},
   {id:'REU19',publisher:'Reuters',url:'https://www.reuters.com/world/europe/france-turmoil-what-might-follow-a-weekend-riots-2026-10-19/',
     publishedDay:'2026-10-19',updatedDay:'2026-10-19',allowedKinds:['ATTRIBUTED_METRIC','ANNOUNCED_FUTURE_EVENT'],
-    readback:{status:'READ_AND_CHECKED_EXTERNALLY',method:'WEB_OPEN',locator:'L166-L180',reviewedDay:AS_OF,
+    readback:{urlAtRead:'https://www.reuters.com/world/europe/france-turmoil-what-might-follow-a-weekend-riots-2026-10-19/',status:'READ_AND_CHECKED_EXTERNALLY',method:'WEB_OPEN',locator:'L166-L180',reviewedDay:AS_OF,
       supportedClaimIds:['ARREST19','OCT24_CALL']}},
   {id:'MON18',publisher:'Le Monde',url:'https://www.lemonde.fr/en/france/article/2026/10/18/october-17-french-protests-crowds-marched-through-the-streets-before-violence-looting-and-chaos-broke-out_6758725_7.html',
     publishedDay:'2026-10-18',updatedDay:null,allowedKinds:['ATTRIBUTED_METRIC'],dynamicContent:true,
-    readback:{status:'READ_AND_CHECKED_EXTERNALLY',method:'WEB_OPEN',locator:'L187-L188; L220-L221',reviewedDay:AS_OF,
+    readback:{urlAtRead:'https://www.lemonde.fr/en/france/article/2026/10/18/october-17-french-protests-crowds-marched-through-the-streets-before-violence-looting-and-chaos-broke-out_6758725_7.html',status:'READ_AND_CHECKED_EXTERNALLY',method:'WEB_OPEN',locator:'L187-L188; L220-L221',reviewedDay:AS_OF,
       supportedClaimIds:['TURNOUT_GOV_ECHO']}},
   {id:'CGT14',publisher:'CGT Finances publiques',url:'https://www.cgtfinancespubliques.fr/public/infos-actions/luttes-2026/article/5-novembre-appel-a-la-mobilisation-pour-les-salaires-les-services-publics-l',
     publishedDay:'2026-10-14',updatedDay:null,allowedKinds:['ANNOUNCED_FUTURE_EVENT'],
-    readback:{status:'READ_AND_CHECKED_EXTERNALLY',method:'WEB_OPEN',locator:'L27-L38',reviewedDay:AS_OF,
+    readback:{urlAtRead:'https://www.cgtfinancespubliques.fr/public/infos-actions/luttes-2026/article/5-novembre-appel-a-la-mobilisation-pour-les-salaires-les-services-publics-l',status:'READ_AND_CHECKED_EXTERNALLY',method:'WEB_OPEN',locator:'L27-L38',reviewedDay:AS_OF,
       supportedClaimIds:['NOV5_CALL']}},
   {id:'EDU09',publisher:'French Ministry of Education',url:'https://www.education.gouv.fr/construire-des-solutions-avec-les-lyceens-506143',
     publishedDay:'2026-10-09',updatedDay:null,allowedKinds:['POLICY_ANNOUNCEMENT'],
-    readback:{status:'READ_AND_CHECKED_EXTERNALLY',method:'WEB_OPEN',locator:'L83-L103',reviewedDay:AS_OF,
+    readback:{urlAtRead:'https://www.education.gouv.fr/construire-des-solutions-avec-les-lyceens-506143',status:'READ_AND_CHECKED_EXTERNALLY',method:'WEB_OPEN',locator:'L83-L103',reviewedDay:AS_OF,
       supportedClaimIds:['EDU_MEASURES']}}
 ]);
 const national={geography:'FRANCE_NATIONAL',population:'DEMONSTRATION_PARTICIPANTS',windowStart:'2026-10-17',windowEnd:'2026-10-17'};
@@ -74,6 +74,7 @@ function validateClaim(claim,registry=SOURCE_REGISTRY,asOf=AS_OF){
   const source=registry.find(s=>s.id===claim.sourceId);
   if(!source)return errorResult('DATA_BLOCKED',['SOURCE_UNAVAILABLE']);
   if(!/^https:\/\//.test(source.url||''))failures.push('SOURCE_URL_INVALID');
+  if(source.readback?.urlAtRead!==source.url)failures.push('SOURCE_URL_MISMATCH_FROM_READBACK');
   if(!source.readback||source.readback.status!=='READ_AND_CHECKED_EXTERNALLY')
     failures.push('SOURCE_NOT_CHECKED');
   if(!source.readback?.locator||!source.readback.locator.trim())
@@ -144,14 +145,20 @@ function compareMetrics(a,b){
   return {status:'SAME_VALUE_DISTINCT_ORIGIN',independentOriginalOrigins:2,
     consensusValue:null};
 }
-function observationStatus(input){
+function observationStatus(input,auditedNegativeEvidence=[]){
   const statuses=new Set(['VERIFIED_PRESENT','VERIFIED_ABSENT','REPORTED_PRESENT',
     'NOT_REPORTED','UNKNOWN','POSTPONED','CANCELLED','MIXED_OR_LOCALIZED']);
   if(!input||!statuses.has(input.status))return {status:'UNKNOWN',warning:'UNSUPPORTED_OBSERVATION_STATUS'};
   if(input.status==='VERIFIED_ABSENT'){
-    if(input.coverage!=='COMPLETE'||input.explicitNegativeEvidence!==true||
-       !Array.isArray(input.verifiedClaimIds)||input.verifiedClaimIds.length===0)
-      return {status:'UNKNOWN',warning:'VERIFIED_ABSENCE_REQUIRES_COMPLETE_COVERAGE'};
+    const ids=input.verifiedClaimIds;
+    const matching=Array.isArray(ids)&&ids.length>0&&ids.every(id=>
+      auditedNegativeEvidence.some(e=>e.claimId===id &&
+        e.kind==='VERIFIED_NEGATIVE_OBSERVATION' &&
+        e.sourceReadbackAttested===true &&
+        e.scopeCoverage==='COMPLETE' &&
+        e.observationWindow===input.observationWindow));
+    if(input.coverage!=='COMPLETE'||input.explicitNegativeEvidence!==true||!matching)
+      return {status:'UNKNOWN',warning:'VERIFIED_ABSENCE_REQUIRES_INDEPENDENT_NEGATIVE_COVERAGE_AUDIT'};
   }
   return {status:input.status,coverage:input.coverage||'UNKNOWN',warning:null};
 }
@@ -283,6 +290,10 @@ function selfTests(){
     validateClaim({...CLAIM_FIXTURES[0],sourceId:'MISSING'}).failures.includes('SOURCE_UNAVAILABLE'));
   test('Link string alone never replaces source readback',
     validateClaim(CLAIM_FIXTURES[0],[{...SOURCE_REGISTRY[0],readback:{status:'NOT_CHECKED'}}]).failures.includes('SOURCE_NOT_CHECKED'));
+  test('Source URL different from inspected readback URL is rejected',
+    validateClaim(CLAIM_FIXTURES[0],[{...SOURCE_REGISTRY[0],url:'https://different.invalid/article'}]).failures.includes('SOURCE_URL_MISMATCH_FROM_READBACK'));
+  test('All source readbacks retain exact inspected URLs',
+    SOURCE_REGISTRY.every(x=>x.readback.urlAtRead===x.url));
   test('Missing readback locator fails closed',
     validateClaim(CLAIM_FIXTURES[0],[{...SOURCE_REGISTRY[0],readback:{...SOURCE_REGISTRY[0].readback,locator:''}}]).failures.includes('SOURCE_LOCATOR_MISSING'));
   test('Claim with valid source but no supporting passage blocked',
@@ -306,8 +317,26 @@ function selfTests(){
   test('NOT_REPORTED is not VERIFIED_ABSENT',observationStatus({status:'NOT_REPORTED'}).status==='NOT_REPORTED');
   test('Uncovered claimed absence reverts to UNKNOWN',
     observationStatus({status:'VERIFIED_ABSENT',coverage:'PARTIAL'}).status==='UNKNOWN');
-  test('Complete attested negative observation can be represented',
-    observationStatus({status:'VERIFIED_ABSENT',coverage:'COMPLETE',explicitNegativeEvidence:true,verifiedClaimIds:['FUTURE_REAL_EVIDENCE']}).status==='VERIFIED_ABSENT');
+  test('Complete flag alone is not independent verified-absence evidence',
+    observationStatus({status:'VERIFIED_ABSENT',coverage:'COMPLETE',
+      explicitNegativeEvidence:true,verifiedClaimIds:['E_NEG'],
+      observationWindow:'2026-10-17:PARIS'}).status==='UNKNOWN');
+  test('Independently attested negative coverage can be represented within fixture',
+    observationStatus({status:'VERIFIED_ABSENT',coverage:'COMPLETE',
+      explicitNegativeEvidence:true,verifiedClaimIds:['E_NEG'],
+      observationWindow:'FIXTURE_TIME:FIXTURE_AREA'},[
+        {claimId:'E_NEG',kind:'VERIFIED_NEGATIVE_OBSERVATION',
+          sourceReadbackAttested:true,scopeCoverage:'COMPLETE',
+          observationWindow:'FIXTURE_TIME:FIXTURE_AREA'}
+      ]).status==='VERIFIED_ABSENT');
+  test('Negative coverage from different time window is not valid',
+    observationStatus({status:'VERIFIED_ABSENT',coverage:'COMPLETE',
+      explicitNegativeEvidence:true,verifiedClaimIds:['E_NEG'],
+      observationWindow:'OTHER_TIME'},[
+        {claimId:'E_NEG',kind:'VERIFIED_NEGATIVE_OBSERVATION',
+          sourceReadbackAttested:true,scopeCoverage:'COMPLETE',
+          observationWindow:'FIXTURE_TIME:FIXTURE_AREA'}
+      ]).status==='UNKNOWN');
   test('Mixed/partial cities need nonbinary state',
     observationStatus({status:'MIXED_OR_LOCALIZED',coverage:'PARTIAL'}).status==='MIXED_OR_LOCALIZED');
   test('Cancelled event retains categorical distinction',
@@ -359,7 +388,9 @@ function selfTests(){
     observedReRoot(rr.newRoot,{id:'E2',fixture:true,observationStatus:'VERIFIED_PRESENT'}).status==='DUPLICATE_OBSERVATION_SKIPPED');
   test('Fixture outcomes lacking explicit observation return gap',
     observedReRoot(root,{id:'E3',fixture:true,observationStatus:'NOT_REPORTED'}).status==='OBSERVATION_GAP');
-  test('No external network or production writes are implemented',true);
+  test('Offline data source registry does not point to localhost or internal services',
+    SOURCE_REGISTRY.every(x=>/^https:\/\//.test(x.url)&&
+      !/localhost|127\.0\.0\.1|\.internal\//.test(x.url)));
   return {result:'PASS',totalChecks:names.length,checks:names,
     sourceAudit:{...all,accepted:undefined,blocked:undefined},
     scenarioAudit:{full:{status:full.status,declaredPaths:full.declaredPaths,
