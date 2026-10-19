@@ -45,7 +45,9 @@ Learn / revisit on fresh evidence
 
 ## Experiments
 
-- [Cycle 006 — First real GitHub routing test](experiments/2026-10-19-cycle-006.md)
+**[Browse the full experiment archive](experiments/)** — GitHub automatically lists all Markdown records in this folder, including new manual test rounds. No per-cycle README edits or custom indexer are required.
+
+- [Cycle 006 — First real GitHub routing test](experiments/2026-10-19-cycle-006.md) (starting example)
 
 ## Default procedure for a new experiment
 
