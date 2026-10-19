@@ -97,8 +97,12 @@ function validateClaim(claim,registry=SOURCE_REGISTRY,asOf=AS_OF){
     failures.push('POST_CUTOFF_SOURCE_REVISION');
   if(source.dynamicContent&&!source.updatedDay&&!source.frozenRevisionBeforeCutoff)
     warnings.push('DYNAMIC_SOURCE_VERSION_UNFROZEN');
-  if(source.readback?.reviewedDay&&source.readback.reviewedDay>asOf)
-    warnings.push('RETROSPECTIVE_READBACK_NOT_PROOF_OF_ASOF_VERSION');
+  if(source.readback?.reviewedDay&&source.readback.reviewedDay>asOf){
+    if(!source.frozenRevisionBeforeCutoff)
+      failures.push('RETROSPECTIVE_SOURCE_VERSION_UNVERIFIED');
+    else
+      warnings.push('ARCHIVED_SOURCE_VERSION_REQUIRES_INDEPENDENT_READBACK');
+  }
   if(!source.allowedKinds?.includes(claim.kind))
     failures.push('CLAIM_OUTSIDE_SOURCE_SUPPORTED_KIND');
   if(!claim.originGroup||!claim.attributor)failures.push('ORIGINAL_ATTRIBUTION_MISSING');
@@ -166,14 +170,23 @@ function compareMetrics(a,b){
   return {status:'SAME_VALUE_DISTINCT_ORIGIN',independentOriginalOrigins:2,
     consensusValue:null};
 }
-function observationStatus(input,auditedNegativeEvidence=[]){
+function observationStatus(input,auditedObservationEvidence=[]){
   const statuses=new Set(['VERIFIED_PRESENT','VERIFIED_ABSENT','REPORTED_PRESENT',
     'NOT_REPORTED','UNKNOWN','POSTPONED','CANCELLED','MIXED_OR_LOCALIZED']);
   if(!input||!statuses.has(input.status))return {status:'UNKNOWN',warning:'UNSUPPORTED_OBSERVATION_STATUS'};
+  if(input.status==='VERIFIED_PRESENT'){
+    const matching=Array.isArray(input.verifiedClaimIds)&&input.verifiedClaimIds.length>0&&
+      input.verifiedClaimIds.every(id=>auditedObservationEvidence.some(e=>
+        e.claimId===id&&e.kind==='VERIFIED_POSITIVE_OBSERVATION'&&
+        e.sourceReadbackAttested===true&&
+        e.observationWindow===input.observationWindow));
+    if(!matching)
+      return {status:'UNKNOWN',warning:'VERIFIED_PRESENCE_REQUIRES_AUDITED_SOURCE_AND_WINDOW'};
+  }
   if(input.status==='VERIFIED_ABSENT'){
     const ids=input.verifiedClaimIds;
     const matching=Array.isArray(ids)&&ids.length>0&&ids.every(id=>
-      auditedNegativeEvidence.some(e=>e.claimId===id &&
+      auditedObservationEvidence.some(e=>e.claimId===id &&
         e.kind==='VERIFIED_NEGATIVE_OBSERVATION' &&
         e.sourceReadbackAttested===true &&
         e.scopeCoverage==='COMPLETE' &&
@@ -337,6 +350,15 @@ function selfTests(){
     validateClaim(CLAIM_FIXTURES[2]).warnings.includes('DYNAMIC_SOURCE_VERSION_UNFROZEN'));
   test('Postcutoff published source itself is blocked',
     validateClaim(CLAIM_FIXTURES[0],[{...SOURCE_REGISTRY[0],publishedDay:'2026-10-21'}]).failures.includes('TEMPORAL_LEAK'));
+  test('Postcutoff readback without archived historical version is blocked, not only warned',
+    validateClaim(CLAIM_FIXTURES[0],[{...SOURCE_REGISTRY[0],
+      readback:{...SOURCE_REGISTRY[0].readback,reviewedDay:'2026-10-21'}}])
+      .failures.includes('RETROSPECTIVE_SOURCE_VERSION_UNVERIFIED'));
+  test('Postcutoff archived readback may remain eligible only with explicit frozen revision attestation',
+    validateClaim(CLAIM_FIXTURES[0],[{...SOURCE_REGISTRY[0],
+      frozenRevisionBeforeCutoff:'2026-10-17T23:00:00Z',
+      readback:{...SOURCE_REGISTRY[0].readback,reviewedDay:'2026-10-21'}}])
+      .warnings.includes('ARCHIVED_SOURCE_VERSION_REQUIRES_INDEPENDENT_READBACK'));
   test('Broken metric scope blocked',
     validateClaim({...CLAIM_FIXTURES[0],scope:{...national,windowEnd:'2026-10-16'}}).failures.includes('METRIC_SCOPE_OR_WINDOW_INVALID'));
   test('Even valid observation window cannot exclude its claimed event day',
@@ -354,6 +376,23 @@ function selfTests(){
   test('Non-metric announcement cannot compare to count',
     compareMetrics(CLAIM_FIXTURES[0],CLAIM_FIXTURES[6]).status==='NOT_COMPARABLE_KINDS');
   test('NOT_REPORTED is not VERIFIED_ABSENT',observationStatus({status:'NOT_REPORTED'}).status==='NOT_REPORTED');
+  test('VERIFIED_PRESENT without any evidence remains UNKNOWN',
+    observationStatus({status:'VERIFIED_PRESENT'}).status==='UNKNOWN');
+  test('A self-attested observation flag alone cannot prove positive occurrence',
+    observationStatus({status:'VERIFIED_PRESENT',verifiedClaimIds:['E_POS'],
+      observationWindow:'2026-10-17:PARIS'}).status==='UNKNOWN');
+  test('Correctly scoped separately attested positive observation may retain VERIFIED_PRESENT in fixture',
+    observationStatus({status:'VERIFIED_PRESENT',verifiedClaimIds:['E_POS'],
+      observationWindow:'FIXTURE_DAY:FIXTURE_CITY'},[
+        {claimId:'E_POS',kind:'VERIFIED_POSITIVE_OBSERVATION',
+          sourceReadbackAttested:true,observationWindow:'FIXTURE_DAY:FIXTURE_CITY'}
+      ]).status==='VERIFIED_PRESENT');
+  test('Positive observation sourced from a different window cannot verify occurrence',
+    observationStatus({status:'VERIFIED_PRESENT',verifiedClaimIds:['E_POS'],
+      observationWindow:'DIFFERENT_DAY'},[
+        {claimId:'E_POS',kind:'VERIFIED_POSITIVE_OBSERVATION',
+          sourceReadbackAttested:true,observationWindow:'FIXTURE_DAY:FIXTURE_CITY'}
+      ]).status==='UNKNOWN');
   test('Uncovered claimed absence reverts to UNKNOWN',
     observationStatus({status:'VERIFIED_ABSENT',coverage:'PARTIAL'}).status==='UNKNOWN');
   test('Complete flag alone is not independent verified-absence evidence',
