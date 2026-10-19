@@ -141,6 +141,14 @@ Do not add a new framework. Test whether **evidence acquisition should be condit
 
 **Disposition:** `ADOPT FINDING: OBSERVABILITY + EXPLORATION REQUIRED TO RECOVER; PROBES HAVE REAL COST`. Synthetic-only evidence.
 
-## 7. GitHub status
+## 7. GitHub publication and independent readback — VERIFIED
 
-This document is written as the results artifact. A separate readback of the created file and archive membership is required to mark publication `VERIFIED`. The preregistration document should remain unchanged.
+After the results file was created, a separate GitHub API read confirmed:
+
+- Pre-registration file remained accessible at `experiments/2026-10-19-cycle-011-manual-test-05-preregistration.md` (blob SHA `992e5d3c23ac696a75e9080da3fabba7656cbde4`). Its create-file commit was `fba9e2cf6426db363ac36fae3cefda4877474591`.
+- Results file was fetched by exact path; its initial blob SHA was `f42a14af5a2db2b6124def5d7ca9ebb82701b11d`.
+- GitHub's native experiment archive listed both the preregistration and results files.
+- The saved text contained preregistration SHA, shifting-regime figures, the STABLE_LOW counterexample, 11/11 checks, and the separate Python replay statement.
+- The final update of this section is editorial only; it does **not** change any frozen test assumption or computed result.
+
+**Disposition:** `ADOPT SYNTHETIC LEARNING RESULT; REAL-WORLD VALUE UNVERIFIED`. No automation was enabled and no external business system changed.
