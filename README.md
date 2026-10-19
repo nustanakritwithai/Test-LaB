@@ -75,6 +75,12 @@ EVIDENCE / FALLBACK: source-of-truth check and alternative if unavailable
 
 **Readiness:** If an existing target is unspecified or permissions are unverified, record `ROUTE_ONLY / TARGET_UNRESOLVED` and do not inspect unrelated account content or perform a write. Only observed destination readback permits `OUTPUT_VERIFIED`. Keep the reason for rejecting a near-match short; do not search all Skills again for trivial tasks.
 
+### GitHub batch-read route — observed case
+
+For **multiple relative paths within one GitHub repository** when the required answer is only **existence and file/directory type**, first consider the existing GitHub Connector's **recursive Git tree** at a **pinned commit** instead of one source read per target. Reject this shortcut when the tree is truncated, the repository/snapshot cannot be established, the user needs file contents, anchors or link semantics, or a direct `fetch_file` is the simpler route for a single file. Keep the fallback as direct content/file reads; never report `OUTPUT_VERIFIED` from an API error or an unexamined truncated tree.
+
+**Observed bounded evidence:** [8-target Git tree versus direct-read trial](experiments/2026-10-20-aom-routed-link-audit.md) checked the same 8 internal targets at one commit, matched 7 file blob SHAs, and observed **1 tree read versus 8 direct path reads** for equal *path-existence* coverage. This does **not** prove lower total time, tokens, cost, or universal selection quality. No new Skill, linter, framework or app was required.
+
 ## Tool Discovery — GitHub-first when existing capabilities are insufficient
 
 **AOM source-selection decision (2026-10-20):** Keep AOM as Markdown and use GitHub as the **primary discovery source for open-source tools** when the current model and connected/installed tools do not adequately fulfill a real objective. GitHub is a source of **candidates**, not an automatic trust, deployment, or installation authority.
