@@ -1,0 +1,711 @@
+{
+  "repo": "astral-sh/ruff",
+  "complete": true,
+  "pages": 44,
+  "entriesFetched": 432,
+  "stopReason": "SHORT_PAGE_44",
+  "dataWindowUTC": {
+    "start": "2025-07-07T00:00:00.000Z",
+    "endExclusive": "2026-07-06T00:00:00.000Z"
+  },
+  "pageEvidence": [
+    {
+      "page": 1,
+      "count": 10,
+      "latest": "2026-10-15T15:24:28Z",
+      "oldest": "2026-08-13T15:18:05Z"
+    },
+    {
+      "page": 2,
+      "count": 10,
+      "latest": "2026-08-07T13:31:55Z",
+      "oldest": "2026-06-04T16:34:11Z"
+    },
+    {
+      "page": 3,
+      "count": 10,
+      "latest": "2026-05-28T14:18:02Z",
+      "oldest": "2026-03-12T23:06:55Z"
+    },
+    {
+      "page": 4,
+      "count": 10,
+      "latest": "2026-03-05T20:08:25Z",
+      "oldest": "2025-12-18T19:37:41Z"
+    },
+    {
+      "page": 5,
+      "count": 10,
+      "latest": "2025-12-11T21:46:52Z",
+      "oldest": "2025-10-07T18:29:02Z"
+    },
+    {
+      "page": 6,
+      "count": 10,
+      "latest": "2025-10-02T19:36:36Z",
+      "oldest": "2025-07-29T22:38:27Z"
+    },
+    {
+      "page": 7,
+      "count": 10,
+      "latest": "2025-07-24T13:33:33Z",
+      "oldest": "2025-05-15T14:14:43Z"
+    },
+    {
+      "page": 8,
+      "count": 10,
+      "latest": "2025-05-09T16:25:12Z",
+      "oldest": "2025-03-14T13:57:37Z"
+    },
+    {
+      "page": 9,
+      "count": 10,
+      "latest": "2025-03-13T18:43:16Z",
+      "oldest": "2025-01-16T15:51:33Z"
+    },
+    {
+      "page": 10,
+      "count": 10,
+      "latest": "2025-01-10T19:02:51Z",
+      "oldest": "2024-11-15T11:37:53Z"
+    },
+    {
+      "page": 11,
+      "count": 10,
+      "latest": "2024-11-08T11:27:13Z",
+      "oldest": "2024-09-05T15:55:33Z"
+    },
+    {
+      "page": 12,
+      "count": 10,
+      "latest": "2024-08-29T15:20:27Z",
+      "oldest": "2024-07-14T15:11:30Z"
+    },
+    {
+      "page": 13,
+      "count": 10,
+      "latest": "2024-07-05T13:30:22Z",
+      "oldest": "2024-05-03T23:14:46Z"
+    },
+    {
+      "page": 14,
+      "count": 10,
+      "latest": "2024-04-25T17:55:24Z",
+      "oldest": "2024-03-06T22:47:24Z"
+    },
+    {
+      "page": 15,
+      "count": 10,
+      "latest": "2024-02-29T15:30:59Z",
+      "oldest": "2024-01-02T18:27:20Z"
+    },
+    {
+      "page": 16,
+      "count": 10,
+      "latest": "2023-12-21T18:46:59Z",
+      "oldest": "2023-10-16T19:51:17Z"
+    },
+    {
+      "page": 17,
+      "count": 10,
+      "latest": "2023-10-02T17:15:00Z",
+      "oldest": "2023-08-08T19:13:04Z"
+    },
+    {
+      "page": 18,
+      "count": 10,
+      "latest": "2023-08-01T14:57:06Z",
+      "oldest": "2023-06-20T19:24:29Z"
+    },
+    {
+      "page": 19,
+      "count": 10,
+      "latest": "2023-06-08T02:49:44Z",
+      "oldest": "2023-04-25T05:50:45Z"
+    },
+    {
+      "page": 20,
+      "count": 10,
+      "latest": "2023-04-19T20:09:17Z",
+      "oldest": "2023-02-27T16:12:26Z"
+    },
+    {
+      "page": 21,
+      "count": 10,
+      "latest": "2023-02-22T19:52:19Z",
+      "oldest": "2023-02-07T02:35:22Z"
+    },
+    {
+      "page": 22,
+      "count": 10,
+      "latest": "2023-02-06T21:44:58Z",
+      "oldest": "2023-01-24T15:47:36Z"
+    },
+    {
+      "page": 23,
+      "count": 10,
+      "latest": "2023-01-24T14:58:23Z",
+      "oldest": "2023-01-16T03:45:35Z"
+    },
+    {
+      "page": 24,
+      "count": 10,
+      "latest": "2023-01-15T05:06:27Z",
+      "oldest": "2023-01-07T05:39:26Z"
+    },
+    {
+      "page": 25,
+      "count": 10,
+      "latest": "2023-01-06T02:25:56Z",
+      "oldest": "2022-12-30T20:42:16Z"
+    },
+    {
+      "page": 26,
+      "count": 10,
+      "latest": "2022-12-30T13:16:50Z",
+      "oldest": "2022-12-22T22:31:48Z"
+    },
+    {
+      "page": 27,
+      "count": 10,
+      "latest": "2022-12-22T03:07:12Z",
+      "oldest": "2022-12-15T03:57:38Z"
+    },
+    {
+      "page": 28,
+      "count": 10,
+      "latest": "2022-12-14T22:35:51Z",
+      "oldest": "2022-12-09T22:48:22Z"
+    },
+    {
+      "page": 29,
+      "count": 10,
+      "latest": "2022-12-09T04:19:13Z",
+      "oldest": "2022-12-06T00:08:02Z"
+    },
+    {
+      "page": 30,
+      "count": 10,
+      "latest": "2022-12-05T22:16:23Z",
+      "oldest": "2022-12-02T18:23:15Z"
+    },
+    {
+      "page": 31,
+      "count": 10,
+      "latest": "2022-12-02T03:31:56Z",
+      "oldest": "2022-11-28T05:19:45Z"
+    },
+    {
+      "page": 32,
+      "count": 10,
+      "latest": "2022-11-26T21:33:25Z",
+      "oldest": "2022-11-20T23:10:29Z"
+    },
+    {
+      "page": 33,
+      "count": 10,
+      "latest": "2022-11-20T18:41:11Z",
+      "oldest": "2022-11-16T03:04:09Z"
+    },
+    {
+      "page": 34,
+      "count": 10,
+      "latest": "2022-11-15T21:18:52Z",
+      "oldest": "2022-11-11T22:13:49Z"
+    },
+    {
+      "page": 35,
+      "count": 10,
+      "latest": "2022-11-11T17:38:35Z",
+      "oldest": "2022-11-05T18:14:03Z"
+    },
+    {
+      "page": 36,
+      "count": 10,
+      "latest": "2022-11-04T16:10:57Z",
+      "oldest": "2022-10-29T22:49:36Z"
+    },
+    {
+      "page": 37,
+      "count": 10,
+      "latest": "2022-10-29T22:34:56Z",
+      "oldest": "2022-10-18T01:44:06Z"
+    },
+    {
+      "page": 38,
+      "count": 10,
+      "latest": "2022-10-17T21:03:00Z",
+      "oldest": "2022-10-12T21:14:43Z"
+    },
+    {
+      "page": 39,
+      "count": 10,
+      "latest": "2022-10-12T16:59:31Z",
+      "oldest": "2022-10-08T21:25:50Z"
+    },
+    {
+      "page": 40,
+      "count": 10,
+      "latest": "2022-10-07T21:36:57Z",
+      "oldest": "2022-10-03T18:09:05Z"
+    },
+    {
+      "page": 41,
+      "count": 10,
+      "latest": "2022-10-03T00:44:06Z",
+      "oldest": "2022-09-16T08:57:41Z"
+    },
+    {
+      "page": 42,
+      "count": 10,
+      "latest": "2022-09-16T01:42:37Z",
+      "oldest": "2022-09-08T15:43:09Z"
+    },
+    {
+      "page": 43,
+      "count": 10,
+      "latest": "2022-09-07T02:14:24Z",
+      "oldest": "2022-08-30T18:41:43Z"
+    },
+    {
+      "page": 44,
+      "count": 2,
+      "latest": "2022-08-30T02:02:01Z",
+      "oldest": "2022-08-29T21:14:05Z"
+    }
+  ],
+  "releases": [
+    {
+      "id": 344874888,
+      "tag_name": "0.15.20",
+      "published_at": "2026-06-25T17:21:46Z",
+      "created_at": "2026-06-25T17:00:55Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.15.20"
+    },
+    {
+      "id": 343835141,
+      "tag_name": "0.15.19",
+      "published_at": "2026-06-24T01:11:40Z",
+      "created_at": "2026-06-24T00:42:26Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.15.19"
+    },
+    {
+      "id": 341576134,
+      "tag_name": "0.15.18",
+      "published_at": "2026-06-18T18:26:34Z",
+      "created_at": "2026-06-18T18:07:24Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.15.18"
+    },
+    {
+      "id": 338138959,
+      "tag_name": "0.15.17",
+      "published_at": "2026-06-11T17:57:00Z",
+      "created_at": "2026-06-11T17:08:53Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.15.17"
+    },
+    {
+      "id": 334471331,
+      "tag_name": "0.15.16",
+      "published_at": "2026-06-04T16:34:11Z",
+      "created_at": "2026-06-04T16:15:41Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.15.16"
+    },
+    {
+      "id": 330889134,
+      "tag_name": "0.15.15",
+      "published_at": "2026-05-28T14:18:02Z",
+      "created_at": "2026-05-28T13:54:03Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.15.15"
+    },
+    {
+      "id": 327000159,
+      "tag_name": "0.15.14",
+      "published_at": "2026-05-21T14:35:54Z",
+      "created_at": "2026-05-21T14:17:42Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.15.14"
+    },
+    {
+      "id": 322563969,
+      "tag_name": "0.15.13",
+      "published_at": "2026-05-14T13:45:27Z",
+      "created_at": "2026-05-14T13:18:49Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.15.13"
+    },
+    {
+      "id": 313358080,
+      "tag_name": "0.15.12",
+      "published_at": "2026-04-24T18:18:25Z",
+      "created_at": "2026-04-24T17:36:40Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.15.12"
+    },
+    {
+      "id": 310009151,
+      "tag_name": "0.15.11",
+      "published_at": "2026-04-16T18:47:31Z",
+      "created_at": "2026-04-16T18:17:46Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.15.11"
+    },
+    {
+      "id": 307097475,
+      "tag_name": "0.15.10",
+      "published_at": "2026-04-09T14:07:15Z",
+      "created_at": "2026-04-09T13:48:41Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.15.10"
+    },
+    {
+      "id": 304797070,
+      "tag_name": "0.15.9",
+      "published_at": "2026-04-02T18:18:12Z",
+      "created_at": "2026-04-02T17:59:00Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.15.9"
+    },
+    {
+      "id": 302052124,
+      "tag_name": "0.15.8",
+      "published_at": "2026-03-26T19:09:30Z",
+      "created_at": "2026-03-26T18:20:09Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.15.8"
+    },
+    {
+      "id": 299046679,
+      "tag_name": "0.15.7",
+      "published_at": "2026-03-19T16:28:14Z",
+      "created_at": "2026-03-19T16:09:44Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.15.7"
+    },
+    {
+      "id": 296446529,
+      "tag_name": "0.15.6",
+      "published_at": "2026-03-12T23:06:55Z",
+      "created_at": "2026-03-12T22:48:57Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.15.6"
+    },
+    {
+      "id": 293662094,
+      "tag_name": "0.15.5",
+      "published_at": "2026-03-05T20:08:25Z",
+      "created_at": "2026-03-05T19:48:21Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.15.5"
+    },
+    {
+      "id": 291085499,
+      "tag_name": "0.15.4",
+      "published_at": "2026-02-26T20:05:18Z",
+      "created_at": "2026-02-26T19:46:41Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.15.4"
+    },
+    {
+      "id": 290979508,
+      "tag_name": "0.15.3",
+      "published_at": "2026-02-26T15:41:29Z",
+      "created_at": "2026-02-26T15:22:43Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.15.3"
+    },
+    {
+      "id": 288479186,
+      "tag_name": "0.15.2",
+      "published_at": "2026-02-19T22:33:41Z",
+      "created_at": "2026-02-19T22:15:51Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.15.2"
+    },
+    {
+      "id": 285958788,
+      "tag_name": "0.15.1",
+      "published_at": "2026-02-13T04:56:49Z",
+      "created_at": "2026-02-12T22:17:21Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.15.1"
+    },
+    {
+      "id": 282670446,
+      "tag_name": "0.15.0",
+      "published_at": "2026-02-03T17:55:25Z",
+      "created_at": "2026-02-03T17:20:59Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.15.0"
+    },
+    {
+      "id": 279183979,
+      "tag_name": "0.14.14",
+      "published_at": "2026-01-22T22:31:25Z",
+      "created_at": "2026-01-22T20:48:46Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.14.14"
+    },
+    {
+      "id": 277184311,
+      "tag_name": "0.14.13",
+      "published_at": "2026-01-15T20:16:11Z",
+      "created_at": "2026-01-15T18:24:25Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.14.13"
+    },
+    {
+      "id": 275281904,
+      "tag_name": "0.14.11",
+      "published_at": "2026-01-08T19:20:47Z",
+      "created_at": "2026-01-08T18:51:47Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.14.11"
+    },
+    {
+      "id": 271557594,
+      "tag_name": "0.14.10",
+      "published_at": "2025-12-18T19:37:41Z",
+      "created_at": "2025-12-18T19:08:17Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.14.10"
+    },
+    {
+      "id": 269689380,
+      "tag_name": "0.14.9",
+      "published_at": "2025-12-11T21:46:52Z",
+      "created_at": "2025-12-11T21:17:52Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.14.9"
+    },
+    {
+      "id": 267470891,
+      "tag_name": "0.14.8",
+      "published_at": "2025-12-04T15:14:16Z",
+      "created_at": "2025-12-04T14:45:53Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.14.8"
+    },
+    {
+      "id": 266079773,
+      "tag_name": "0.14.7",
+      "published_at": "2025-11-28T21:03:33Z",
+      "created_at": "2025-11-28T20:34:27Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.14.7"
+    },
+    {
+      "id": 264353205,
+      "tag_name": "0.14.6",
+      "published_at": "2025-11-21T14:33:45Z",
+      "created_at": "2025-11-21T14:00:56Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.14.6"
+    },
+    {
+      "id": 262235461,
+      "tag_name": "0.14.5",
+      "published_at": "2025-11-13T20:06:01Z",
+      "created_at": "2025-11-13T19:37:31Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.14.5"
+    },
+    {
+      "id": 260429449,
+      "tag_name": "0.14.4",
+      "published_at": "2025-11-06T22:15:11Z",
+      "created_at": "2025-11-06T21:47:29Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.14.4"
+    },
+    {
+      "id": 258658695,
+      "tag_name": "0.14.3",
+      "published_at": "2025-10-31T00:33:33Z",
+      "created_at": "2025-10-31T00:06:29Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.14.3"
+    },
+    {
+      "id": 256812088,
+      "tag_name": "0.14.2",
+      "published_at": "2025-10-23T19:44:41Z",
+      "created_at": "2025-10-23T19:17:22Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.14.2"
+    },
+    {
+      "id": 255101312,
+      "tag_name": "0.14.1",
+      "published_at": "2025-10-16T18:12:42Z",
+      "created_at": "2025-10-16T17:44:13Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.14.1"
+    },
+    {
+      "id": 252807469,
+      "tag_name": "0.14.0",
+      "published_at": "2025-10-07T18:29:02Z",
+      "created_at": "2025-10-07T18:05:47Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.14.0"
+    },
+    {
+      "id": 251834866,
+      "tag_name": "0.13.3",
+      "published_at": "2025-10-02T19:36:36Z",
+      "created_at": "2025-10-02T19:14:05Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.13.3"
+    },
+    {
+      "id": 250045671,
+      "tag_name": "0.13.2",
+      "published_at": "2025-09-25T15:01:26Z",
+      "created_at": "2025-09-25T14:37:46Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.13.2"
+    },
+    {
+      "id": 248417482,
+      "tag_name": "0.13.1",
+      "published_at": "2025-09-18T20:00:24Z",
+      "created_at": "2025-09-18T19:37:29Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.13.1"
+    },
+    {
+      "id": 246236447,
+      "tag_name": "0.13.0",
+      "published_at": "2025-09-10T16:31:51Z",
+      "created_at": "2025-09-10T16:11:22Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.13.0"
+    },
+    {
+      "id": 244856030,
+      "tag_name": "0.12.12",
+      "published_at": "2025-09-04T16:56:33Z",
+      "created_at": "2025-09-04T16:35:56Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.12.12"
+    },
+    {
+      "id": 243194130,
+      "tag_name": "0.12.11",
+      "published_at": "2025-08-28T14:05:52Z",
+      "created_at": "2025-08-28T13:45:01Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.12.11"
+    },
+    {
+      "id": 241607796,
+      "tag_name": "0.12.10",
+      "published_at": "2025-08-21T18:30:05Z",
+      "created_at": "2025-08-21T18:09:31Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.12.10"
+    },
+    {
+      "id": 240025676,
+      "tag_name": "0.12.9",
+      "published_at": "2025-08-14T16:15:21Z",
+      "created_at": "2025-08-14T15:54:44Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.12.9"
+    },
+    {
+      "id": 238412620,
+      "tag_name": "0.12.8",
+      "published_at": "2025-08-07T19:13:30Z",
+      "created_at": "2025-08-07T18:52:16Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.12.8"
+    },
+    {
+      "id": 236107677,
+      "tag_name": "0.12.7",
+      "published_at": "2025-07-29T22:38:27Z",
+      "created_at": "2025-07-29T22:18:42Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.12.7"
+    },
+    {
+      "id": 234882654,
+      "tag_name": "0.12.5",
+      "published_at": "2025-07-24T13:33:33Z",
+      "created_at": "2025-07-24T13:12:50Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.12.5"
+    },
+    {
+      "id": 233269218,
+      "tag_name": "0.12.4",
+      "published_at": "2025-07-17T17:32:39Z",
+      "created_at": "2025-07-17T17:14:01Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.12.4"
+    },
+    {
+      "id": 231781095,
+      "tag_name": "0.12.3",
+      "published_at": "2025-07-11T13:26:30Z",
+      "created_at": "2025-07-11T13:07:50Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.12.3"
+    }
+  ]
+}
