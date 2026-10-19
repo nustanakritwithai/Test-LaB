@@ -4,6 +4,7 @@
 > **Architecture decision:** **Remain Markdown-first. Do not convert AOM into a Skill, Plugin, autonomous app, orchestration framework, or database unless a verified missing capability and clear positive net benefit justify it.**  
 > **Working repository:** [Test-LaB](https://github.com/nustanakritwithai/Test-LaB)  
 > **Control:** Manual, on-demand. No recurring automation enabled by this roadmap.
+> **Architecture override (2026-10-20):** [Independent Development Policy](INDEPENDENT_DEVELOPMENT_POLICY.md) supersedes every previous plan to merge AOM, Multiverse, or other Skills. Each is developed separately; no AOM→Multiverse dependency or unified Skill is allowed.
 
 ## 1. Objective and current verified baseline
 
@@ -12,8 +13,8 @@
 **Existing reusable capabilities — do not rebuild:**
 
 - [README.md](README.md): Opportunity-first, evidence-first, no-action alternative, tool-selection gate, permission boundary, transparent evidence labels.
-- [Continuous Multiverse v4](world-model/CONTINUOUS_MULTIVERSE_v4.md): Every nonterminal point is a new Decision Point / Universe Root / Learning Point. Re-root after a **verified** new observation; simulation is never mistaken for evidence.
-- [Finite reference tests](tests/continuous_multiverse_v4.js): 41/41 synthetic logic fixtures (per prior [experiment](experiments/2026-10-19-cycle-012-continuous-multiverse.md)). A finite toy model is **not** real-world forecasting accuracy.
+- [Continuous Multiverse v4](world-model/CONTINUOUS_MULTIVERSE_v4.md): **Independent research project only.** Its evidence is informative but its operating protocol must NOT be merged into, required by, or loaded as a default part of AOM.
+- [Finite Multiverse reference tests](tests/continuous_multiverse_v4.js): independent Multiverse evidence only, not AOM acceptance tests or an implicit AOM integration requirement.
 - [Historical AOM experiment archive](experiments/): tool routing, indexing, matched-budget information retrieval, finite non-myopic planning, online posterior learning, probing and overestimation guardrails. These mostly test controlled logic rather than business value.
 - [Cancelled Hybrid Mind Facebook field pilot](experiments/2026-10-19-field-pilot-cancelled-safe-github-replay.md): **DO NOT** post, reschedule, test-publish or alter Hybrid Mind, Facebook, WordPress, Metricool or the production team workflow. The replacement is read-only public GitHub history replay.
 
@@ -51,7 +52,7 @@ AOM must retain the **DO NOTHING / KEEP BASELINE** option for every consequentia
 
 - Run the **fixed baseline** and AOM with the **same available evidence timestamp and comparable tool-call budget**.
 - Freeze each predicted event/action before revealing the later historical event, then score; if tool effects on the external world cannot be observed, score predictive/information quality only, not business revenue.
-- At every next point reconstruct the observed history, revise belief using only legitimate observations, and re-root v4. Return `WAIT_FOR_OBSERVATION` when missing, `MODEL_MISS` when the observation violates the declared model.
+- At every AOM decision point, reassess the observed history and constraints under AOM's OWN operating rules; do not call, import, or require Multiverse v4 as a component. Missing or contradictory evidence must remain explicit, not fabricated.
 - Publish only **public, non-sensitive** source URLs, timestamped predictions, score tables, failures and reproducibility information.
 - **PASS** only for reproducible source reconstruction, no look-ahead, valid paired comparison, correct accounting and evidence-backed scoring; improvements must be evaluated separately. If scoring data are too thin, outcome is `INCONCLUSIVE`, not victory.
 
@@ -79,7 +80,7 @@ AOM response contract (keep compact for the user, detailed evidence only when wa
 
 - Record **forecast before outcome** and its timestamp and provenance. Do not update a real-world belief with a virtual future.
 - Record observed changes at S2, including unexpected events; distinguish `OBSERVED_REALITY` from `OBSERVED_FIXTURE`.
-- Rebuild the next **bounded** opportunity tree under current costs, remaining budget, tool availability, permissions and user objective. Do not automatically continue yesterday's plan.
+- Reassess the next opportunity using AOM's own rules under current costs, remaining budget, tool availability, permissions and user objective. Do not automatically continue yesterday's plan or require a Multiverse tree.
 - Track whether changing evidence changed AOM's recommended action and whether the change was justified by the evidence.
 - Score calibration on temporally held-out cases if sample size permits; avoid treating in-sample fixture passes as proof of generalization.
 - Never replay the same observation as two independent outcomes. If there are no new observations, stop and wait for user input.
@@ -114,13 +115,13 @@ After P1–P3 show credible predictive and decision-quality evidence, optionally
 
 If no safe comparable field intervention is available, remain in read-only mode and state that business uplift is still **UNVERIFIED**. Do not build software as a substitute for outcome evidence.
 
-## 8. Minimal file architecture and version ownership
+## 8. Minimal file architecture and independent version ownership
 
 - **README.md:** How to start + operating principles. Do not maintain a manual per-experiment index.
-- **world-model/CONTINUOUS_MULTIVERSE_v4.md:** Canonical **decision/learning logic**; do not copy and fork its rule text into a second competing operating document.
+- **world-model/CONTINUOUS_MULTIVERSE_v4.md:** Canonical rules **only for the independent Multiverse project**, never a mandatory AOM layer or Skill merge target.
 - **ROADMAP.md:** Priorities and acceptance gates only (this document); not an implementation of another policy engine.
 - **experiments/:** Each warranted experiment's pre-registration + results + verifiable outcome status.
-- **tests/continuous_multiverse_v4.js:** Existing narrow fixture suite. Modify only if a testable defect or real evidence warrants it; it is not a new app.
+- **tests/continuous_multiverse_v4.js:** Independent Multiverse fixture suite. Do not treat its PASS counts as AOM success or use it to force an integration.
 
 Use GitHub history to trace changes. Keep public documents free of credentials, private analytics, personally identifying data, unpublished work and fabricated results. When in doubt about publishability, keep details in the private conversation instead.
 
@@ -141,3 +142,7 @@ Use GitHub history to trace changes. Keep public documents free of credentials, 
 This roadmap succeeds **not** when MD files multiply, but when AOM repeatedly gives an evidence-backed, comparable choice with sensible opportunity cost; learns from new genuinely observed information; rejects low-value development; and documents what is and is not proven.
 
 **Current architectural decision:** `MD = DO` / `NEW SKILL = WATCH` / `NEW FRAMEWORK = DROP` / `PRODUCTION MUTATION = OUT OF SCOPE`.
+
+## 11. Independent development boundary (overrides any older cross-project language)
+
+AOM, Multiverse World Model, and all other Skills/projects maintain separate missions, instructions, backlogs, tests and version numbers. Past AOM+Multiverse comparisons remain valid **archival research**, not instructions to integrate. The proposal `world-model/AOM_V03_MULTIVERSE_LAYER_CANDIDATE.md` is **CANCELLED**. No shared master Skill, shared decision engine, default load of another project's Markdown, or cross-project adoption is permitted by this roadmap. A one-off voluntary use of an available external tool for a task is not a Skill merger. The controlling document is [INDEPENDENT_DEVELOPMENT_POLICY.md](INDEPENDENT_DEVELOPMENT_POLICY.md).
