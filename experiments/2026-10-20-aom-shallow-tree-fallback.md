@@ -37,4 +37,38 @@
 
 ## Results
 
-PENDING — no Git-tree outcome, directory listing or external verification observed at preregistration time.
+**Executed and observed** after preregistration; frozen commit: `2a8a28d4636b83e71c734acdebc44004192b1c0e` (the preregistration creation commit). This report is updated afterward; original frozen plan remains above in GitHub history.
+
+### Actual GitHub read evidence
+
+**Route A, shallow root:** Existing connected GitHub `fetch` to `GET /git/trees/2a8a28d...` with no `recursive` argument returned `truncated=false`, **8** top-level entries, root `README.md` as blob and `experiments` as tree (SHA `4829473d5a12a01520223347f1f267a0a8a1fdb5`). The three nested target paths were not listed. **Their observed status at this step was `NOT_ENUMERATED_SCOPE_INCOMPLETE`—not `ABSENT`.** This is a real Git API response with deliberate shallow traversal, **not** an artificially triggered network failure or a truncated API response.
+
+**Route B, evidence-backed re-selection:** One existing GitHub `fetch` to pinned parent subtree `GET /git/trees/4829473d5a12a01520223347f1f267a0a8a1fdb5` returned `truncated=false` and **35** entries. Both known nested AOM paths were present as blobs, with SHA `d832efcf7ebd296ca2f376e8e0e3d1ab2a6dc107` and `abe9c4c13236c806f8ea7a06219bd5e6a7bcdbbb`; the predefined sentinel was absent from this complete one-level `experiments/` listing.
+
+**Independent reference:** A full recursive Git tree at the **same pinned commit** returned `truncated=false`, **68** entries, the three known paths as blobs, and no exact sentinel. Two positive `fetch_file` operations at that same commit independently returned the matching blob SHAs. One deliberate `fetch_file` of the sentinel returned a GitHub **404 NOT_FOUND**, not a timeout or authentication error. Repository/commit access was established by successful sibling reads; this supports `ABSENT_AT_PINNED_COMMIT` for the sentinel but is not a universal claim about future branches.
+
+### Target-by-target result, same snapshot
+
+| Frozen target | Shallow root verdict | Parent subtree / full recursive verdict | Independent direct check |
+|---|---|---|---|
+| `README.md` | `FOUND` (blob) | `FOUND` in full recursive tree | Root blob SHA `29a6b8a0...`; no additional direct file read required |
+| `experiments/2026-10-19-cycle-006.md` | `NOT_ENUMERATED` | `FOUND` (blob) | Pinned `fetch_file` OK, SHA `d832efcf...` matches |
+| `experiments/2026-10-20-aom-routed-link-audit.md` | `NOT_ENUMERATED` | `FOUND` (blob) | Pinned `fetch_file` OK, SHA `abe9c4c1...` matches |
+| `experiments/__aom_scope_missing_sentinel_20261020.md` | `NOT_ENUMERATED` | `ABSENT_AT_PINNED_COMMIT` | Pinned `fetch_file` returned 404 |
+
+**Accuracy within declared test:** 4/4 final target classifications match an untruncated, same-commit recursive tree, with independent file checks for nested positives and sentinel absence. The shallow read alone correctly **abstained** on 3/4 targets.
+
+### Tool-selection and resource comparison
+
+- **Shallow-first recovery:** 1 root tree call + 1 parent subtree call = **2** target-enumeration API reads; it eventually covers all four targets.
+- **Start with full recursive tree when depth and scope known:** **1** full-tree API read for the same four path-existence questions (68 entries, `truncated=false`), so the proactive correct route avoids an unnecessary shallow root call **in this observed case**.
+- **Additional independent checks:** 2 successful pinned `fetch_file` calls and 1 intentional not-found pinned `fetch_file` call, outside both tree route counts.
+- **Not measured:** wall-clock latency, cost in money or tokens, human effort, large-repo truncation rates or system reliability. Setup, preregistration, report and README maintenance also incur real tool calls. Thus **no claim of overall or general savings**.
+
+**Observed weakness and revised decision:** The existing README bulk-tree rule treated `truncated=true` as a negative condition but did not explicitly warn that `truncated=false` can occur for a **non-recursive shallow scope** whose output cannot speak about deeper paths. The initial route was intentionally too narrow. Adopt the explicit `TREE_SCOPE_COVERAGE` gate rather than adding a new Skill, tool, or linter.
+
+**Policy change from this run:** [README GitHub batch-read guidance](../README.md) received a scoped `Tree scope guard` via GitHub commit [`8b9eede6841b53c09bdab2b2606081627d8f28b5`](https://github.com/nustanakritwithai/Test-LaB/commit/8b9eede6841b53c09bdab2b2606081627d8f28b5) and was read back (blob `ade6bea36e4c01c87fa08b05c6d6326d11119abd`). For mixed-depth paths, consider full recursive tree immediately when safe; for a known subfolder use exact parent subtree, and for content/isolated file use direct fetch. `NOT_ENUMERATED` and `TRUNCATED_RESPONSE` are distinct. No edits to AOM V0.3 original or Multiverse.
+
+**Decision:** `ADOPT NARROW COVERAGE RULE / TEST PASSED ON PINNED REPO / GENERALIZATION UNVERIFIED`. Do not continue creating synthetic tests solely to increase pass counts; the next substantive validation should come from a distinct user-originated task with new evidence.
+
+**End of observed manual test.**
