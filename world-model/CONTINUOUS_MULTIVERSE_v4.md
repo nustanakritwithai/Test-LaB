@@ -213,7 +213,7 @@ h_t = observed history, s' = possible future state (not revealed in reality), o 
 
 ## 8. Test-LaB reference demonstration
 
-- **Reference executable:** [tests/continuous_multiverse_v4.js](../tests/continuous_multiverse_v4.js) — Node.js 18+ standard library only, run with \`node tests/continuous_multiverse_v4.js\`.
+- **Reference executable:** [tests/continuous_multiverse_v4.js](../tests/continuous_multiverse_v4.js) — Node.js 18+ standard library only, run with `node tests/continuous_multiverse_v4.js`.
 - **Results and verification:** [Cycle 012 — Continuous Multiverse v4](../experiments/2026-10-19-cycle-012-continuous-multiverse.md).
 - Example intentionally contains only a Beta-Bernoulli world with 3 actions (STOP, PROBE, COMMIT), 2 possible outcomes and finite lookahead H=5, not an arbitrary physics/social/economic simulator.
 - A point updates its belief after a hypothetical or fixture observation, generates its own feasible actions, forecasts the next node and recursively evaluates all declared branches. Each observed fixture point rebuilds a new H=5 tree.
