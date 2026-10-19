@@ -1,7 +1,7 @@
 # Test-LaB — Cycle 014 / Global Shared Budget for Continuous Multiverse v4
 
 **Date:** 2026-10-19 (Asia/Bangkok)  
-**Status:** **FINITE SYNTHETIC 52/52 PASS / PREDICTIVE & BUSINESS UPLIFT UNVERIFIED / ORIGINAL v4 UNCHANGED**  
+**Status:** **FINITE SYNTHETIC 52/52 PASS / PREDICTIVE & BUSINESS UPLIFT UNVERIFIED / NARROW v4 BUDGET CORRECTION APPLIED AFTER TEST**  
 **Operating candidate:** [Bounded Multiverse v4.1](../world-model/BOUNDED_MULTIVERSE_v4_1_CANDIDATE.md)  
 **Executable reference:** [tests/bounded_multiverse_v4_1.js](../tests/bounded_multiverse_v4_1.js)  
 **Reference baseline:** [tests/continuous_multiverse_v4.js](../tests/continuous_multiverse_v4.js)  
@@ -90,3 +90,17 @@ At budget 5, PROBE/COMMIT/STOP root actions exist but future uncertainty remains
 **If evidence favorable:** propose opt-in/conditional adoption for suitable multi-step decisions, without overriding user-controlled production workflows.
 
 **Current verdict:** SHARED_BUDGET_LOGIC_PASS / FULL_REFERENCE_MATCH / BEHAVIORAL_VALUE_UNVERIFIED.
+
+
+## 7. Post-test follow-through: small v4 correctness patch (not a new model)
+
+**After** the deterministic fixture passed and the isolated code/report were committed, the existing [v4 operating Markdown](../world-model/CONTINUOUS_MULTIVERSE_v4.md) received a narrowly scoped patch to v4.0.1, Git commit **fd18dc5c46f6548d1695a339b4aaa1a5e3c779dd**:
+
+- Replaced the unsafe recursive budget-number pass-through with one shared ledger per planning invocation.
+- Added atomic debit, declared UNEXPLORED frontier, breadth-first root-family fairness and conservative interval-certificate/abstention rules.
+- Preserved the six-step AOM mission, active workflow, original exhaustive reference, and simulated-versus-real evidence separation.
+- No change to AOM V0.3 source, Hybrid Mind, Meta/Facebook, Metricool, any other production service or publishing flow.
+
+**Evidence boundary:** The 52 checks apply to the *isolated executable candidate* that informed the patch. A post-write readback verified the main v4.0.1 Markdown contains the shared-ledger rules and no longer contains the known unsafe recursive call; this is a **structural/readback verification**, not a new 52-case execution of the prose itself or proof of real-world model utility.
+
+The broader v4.1 candidate remains optional/test-only. A fair held-out comparison between plain AOM and AOM + bounded multiverse is still PENDING.
