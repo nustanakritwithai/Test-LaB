@@ -1,6 +1,6 @@
 ---
 title: "Continuous Multiverse World Model v4 — Every Point Is a Decision, Root, and Learning Point"
-version: "4.0.0"
+version: "4.0.1"
 date: "2026-10-19"
 language: "th"
 artifact: "Markdown operating instructions"
@@ -8,6 +8,7 @@ project: "AI Opportunity Manager / Test-LaB"
 source_repo: "https://github.com/nustanakritwithai/Test-LaB"
 supersedes: "world-model/ADAPTIVE_DECISION_SKILL_v3.md"
 reference_test: "tests/continuous_multiverse_v4.js"
+bounded_reference_test: "tests/bounded_multiverse_v4_1.js"
 mode: "ON_DEMAND / EVIDENCE_TRIGGERED"
 status: "FINITE_SYNTHETIC_LOGIC_VERIFIED / REAL_WORLD_PREDICTIVE_SKILL_UNVERIFIED"
 ---
@@ -86,65 +87,94 @@ point:
 
 Do not invent source IDs, probabilities, observations or actual actions.
 
-## 3. POINT_KERNEL — กฎหนึ่งชุดสำหรับทุกจุด
+## 3. POINT_KERNEL — ทุกจุดใช้กฎเดียวกัน พร้อม Global Shared Budget
+
+**v4.0.1 correctness patch (2026-10-19):** เดิม pseudocode ส่งตัวเลข resource_budget ค่าเดิมลงลูกแต่ละกิ่ง ซึ่งยังไม่บังคับใช้เพดานงบรวมจริง. ในการจำลองหนึ่งครั้งให้สร้าง **Shared Ledger เพียงชุดเดียว** ทุกโหนดต้องหักจาก ledger เดียวกัน และใช้ frontier แบบ breadth-first พร้อมความเป็นธรรมระหว่างกลุ่มทางเลือกแรกเมื่อทรัพยากรมีจำกัด. ไม่ต้องเขียน framework ใหม่; มี reference test ใน [bounded_multiverse_v4_1.js](../tests/bounded_multiverse_v4_1.js).
 
 ~~~text
-POINT_KERNEL(node, horizon, resource_budget):
+POINT_KERNEL(node):
     require node.mode in {OBSERVED_REALITY, OBSERVED_FIXTURE, SIMULATED_BRANCH}
     if goal_reached or explicit_stop or terminal_constraints:
         return TERMINAL(reason, final_state)
-    if horizon == 0:
+    if horizon_remaining == 0:
         return HORIZON_BOUNDARY(continuation_unknown=true)
 
-    # LEARNING POINT
-    reconstruct current state and observables
-    compare previous forecast with current observation if OBSERVED
+    reconstruct current state, allowed observations, resources, capabilities
+    compare previous forecast with latest observation IF node is observed
     label FACT / INFERENCE / HYPOTHESIS / UNKNOWN
-    update local belief using only node's legitimate observed history
     if node.mode == SIMULATED_BRANCH:
-        learning_scope = VIRTUAL_ONLY
+        learning_scope = BRANCH_LOCAL_HYPOTHETICAL_ONLY
     else:
         learning_scope = OBSERVED_WITH_PROVENANCE
-    if observation contradicts modeled outcomes:
+    if observation contradicts all declared possible outcomes:
         return MODEL_MISS, preserve evidence, reopen hypotheses
+    return locally_feasible_actions_including_STOP_WAIT_TEST_when_meaningful
 
-    # UNIVERSE ROOT
-    A = enumerate_feasible_actions(current_state, permissions, tool_availability)
-    include STOP / WAIT / TEST when feasible and meaningful
-    for each action a in A:                             # no greedily discarded first branch
-        for each declared world hypothesis m:
-            for each possible exogenous outcome w:
+PLAN_BOUNDED(root, lookahead_horizon, max_work_units):
+    shared_ledger = {limit: max_work_units, used: 0}  # create ONCE per planning run
+    frontier = [{node:root, depth:0, root_action:null}]
+    while an affordable nonterminal node exists:
+        # Prefer shallower nodes; among equal depths share expansions fairly
+        # across first-action groups. Do NOT use early reward to delete branches.
+        current = shallowest_affordable_node_with_fair_root_action(frontier)
+        A = POINT_KERNEL(current.node)
+        if current.node is TERMINAL or HORIZON_BOUNDARY: mark terminal; continue
+        immediate_edges = count_all_declared_outcome_edges(A)
+        atomic_cost = 1 + immediate_edges
+        if shared_ledger.used + atomic_cost > shared_ledger.limit:
+            mark current.node UNEXPLORED, retain it and try other affordable nodes
+            continue
+        shared_ledger.used += atomic_cost  # debit BEFORE expanding; NEVER clone
+        for each feasible action a in A:
+            for each declared world hypothesis m and nature outcome w:
                 for each observable result o allowed by w:
-                    next = causal_transition(state, a, w, o, model=m)
-                    attach provenance and hypothetical belief update
-                    child_policy = POINT_KERNEL(next, horizon - 1, resource_budget)
-                    record transition, child policy, risk, resource cost, uncertainty
-    assert coverage against DECLARED branches, not every conceivable reality
+                    child = causal_transition(current.node, a, m, w, o)
+                    update only child's hypothetical belief from its branch
+                    enqueue child on THE SAME frontier/ledger (if nonterminal)
+                    record declared transition and provenance
+        assert shared_ledger.used <= shared_ledger.limit
 
-    # DECISION POINT
-    reject hard-constraint violations
-    evaluate whole contingent-policy tree against goal / risk / cost / option value
-    do not select a single lucky terminal leaf
-    choose action using observation history available at this point
-    return {branches, policy, one_next_action, evidence, uncertainty}
+    # Branches not visited must be tracked as UNKNOWN/UNEXPLORED, never as bad.
+    # Numerical bounds below require grounded/explicitly declared
+    # likelihoods, rewards and terminal limits; otherwise mark UNKNOWN.
+    propagate sound lower/upper continuation bounds to all expanded parents
+    for each feasible first action a:
+        evaluate complete observation-contingent policy bounds for a
+    if some a.lower >= every other feasible b.upper:
+        certificate = CERTIFIED_WITHIN_DECLARED_MODEL
+        selected_first_action = a  # may certify despite incomplete coverage
+    else:
+        certificate = ABSTAIN_UNCERTIFIED
+        selected_first_action = NONE
+    return {selected_first_action, certificate, shared_ledger,
+            explored_count, unexplored_frontier,
+            status: COMPLETE or BUDGET_EXHAUSTED}
 
-REALITY_LOOP(root, lookahead_horizon=H):
-    while authorized, objective not terminal and run budget available:
-        result = POINT_KERNEL(root, H, budget)
-        store pre-action forecast, decision evidence and model version
-        if result requires external action without approval: STOP_FOR_APPROVAL
-        if result is STOP / GOAL_REACHED: TERMINAL
-        execute at most one authorized real action (if required)
-        try to obtain a verified resulting observation from the external source
-        if no verified resulting observation: WAIT_FOR_OBSERVATION
-        append exactly one unique observed event with source and timestamp
-        compare pre-action predicted distribution against actual observation
-        update only observed-root beliefs using legitimate evidence
-        root = observed successor at t+1
-        # RECEDING HORIZON: start a NEW depth-H multiverse from the new observed root
-        # do not simply descend the old precomputed virtual tree
+REALITY_LOOP(root, lookahead_horizon=H, per_round_budget):
+    while authorized, objective not terminal and real-run budget available:
+        # New *observed* root may receive a new authorized budget.
+        # Its hypothetical descendants DO NOT receive fresh budgets.
+        plan = PLAN_BOUNDED(root, H, per_round_budget)
+        store pre-action forecast, coverage, tool choice and model version
+        if plan.certificate == ABSTAIN_UNCERTIFIED:
+            return WAIT_FOR_EVIDENCE_OR_BUDGET  # no invented decision
+        if plan.selected_first_action == STOP or goal_reached: return TERMINAL
+        if selected action requires approval but is not authorized:
+            return STOP_FOR_APPROVAL
+        execute at most ONE authorized real action (if required)
+        try to obtain its independently verified observation
+        if no verified observation: return WAIT_FOR_OBSERVATION
+        append exactly one unique observed event with provenance
+        compare the pre-action prediction with actual observed event
+        update ONLY observed-root beliefs using legitimate evidence
+        root = newly observed successor at t+1
+        # Start a NEW depth-H multiverse with a fresh budget at the new real root.
     return CHECKPOINT / STOP / WAIT / MODEL_MISS
 ~~~
+
+**Accounting/proof boundary:** 1 WORK_UNIT in the reference fixture = one expanded decision or one evaluated immediate nature-transition edge. This caps modeled tree work, **not** actual wall time, memory, token usage or third-party costs. Certifying a first action requires **valid model-derived bounds**; without grounded bounds/probabilities, retain UNKNOWN and do not fabricate a winning policy. A budget cap can stop with BUDGET_EXHAUSTED even if a first action is already certified; certification is not the same as 100% branch coverage.
+
+**Reference scope:** The isolated toy script passed 52 deterministic checks (full reference 1,678 nodes and 1,677 work units). This is a correctness regression on a declared finite synthetic environment, **not real-world predictive or AOM behavioral superiority**. See [Cycle 014](../experiments/2026-10-19-cycle-014-bounded-multiverse-budget-test.md). The original exhaustive reference remains available as [continuous_multiverse_v4.js](../tests/continuous_multiverse_v4.js).
 
 **เหตุผลของ fixed-depth re-root:** ที่จุด 2, 3, 4... ให้ใช้ horizon H ใหม่เสมอสำหรับการจำลองล่วงหน้า แม้ก้าวจริงจะเดินไปเรื่อย ๆ. จะคงการกำหนด resource budget, termination และอนุมัติการกระทำแยกต่างหากเพื่อไม่ให้เกิด infinite execution.
 
