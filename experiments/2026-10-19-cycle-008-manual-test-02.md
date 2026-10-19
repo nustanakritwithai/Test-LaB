@@ -3,7 +3,7 @@
 **Date:** 2026-10-19 (Asia/Bangkok)  
 **Challenge:** Can AI Opportunity Manager identify a higher-value action than merely creating the next report, and deliver a measurable improvement by using capabilities GitHub already has?  
 **Scope:** The public Test-LaB repository only. No changes to Hybrid Mind, no new automation, custom code, plugin, database, or service.  
-**Verdict at authoring:** `EXECUTION COMPLETED; POST-WRITE READBACK REQUIRED` — see actual repository contents to independently confirm this file is reachable.
+**Final verdict:** `TEST PASS — NATIVE ARCHIVE VERIFIED / BUSINESS UPLIFT UNVERIFIED` (independently checked after the new report was written).
 
 ## 1. Goal, baseline and pre-registered measurable endpoint
 
@@ -65,4 +65,16 @@ For Cycle 009, move beyond lab housekeeping to one authorized, measurable end-us
 
 The valuable decision was not "make another report" but **remove a recurring source of friction using an existing GitHub capability**. The decision becomes meaningful only if subsequent cycles remain accessible without further index-management work.
 
-**Cycle 008 disposal:** `ADOPT IF ARCHIVE READBACK PASSES`. No automatic schedule was enabled.
+**Cycle 008 disposition:** `ADOPT — archive readback passed`. No automatic schedule was enabled.
+
+## 8. Post-write independent verification — PASS
+
+Read-only follow-up checks after the Cycle 008 GitHub write confirmed:
+
+- `README.md` still contains the stable `](experiments/)` archive link. Its blob SHA was unchanged after the new report: `caa0125903b65c3a698d342f990b8579d1a3ede9`.
+- GitHub's `contents/experiments` API returned exactly **three files**: `2026-10-19-cycle-006.md`, `2026-10-19-cycle-007-manual-control.md` and `2026-10-19-cycle-008-manual-test-02.md`.
+- This Cycle 008 Markdown file was independently fetched and its contents inspected.
+- **Acceptance result:** The newest record was discoverable via the native archive *without a second README index update*; `PASS`.
+- **Bounded conclusion:** The maintenance objective is met. No observed business improvement, wall-time savings or model-wide superiority is claimed.
+
+Next: in a user-commanded round, select an objective with measurable downstream effects, compare equal resource budgets, and keep the alternative of doing nothing in the comparison.
