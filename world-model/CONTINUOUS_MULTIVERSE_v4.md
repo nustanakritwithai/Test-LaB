@@ -133,8 +133,10 @@ REALITY_LOOP(root, lookahead_horizon=H):
         result = POINT_KERNEL(root, H, budget)
         store pre-action forecast, decision evidence and model version
         if result requires external action without approval: STOP_FOR_APPROVAL
-        if no verified actual observation: WAIT_FOR_OBSERVATION
-        execute at most one authorized real action and verify external result
+        if result is STOP / GOAL_REACHED: TERMINAL
+        execute at most one authorized real action (if required)
+        try to obtain a verified resulting observation from the external source
+        if no verified resulting observation: WAIT_FOR_OBSERVATION
         append exactly one unique observed event with source and timestamp
         compare pre-action predicted distribution against actual observation
         update only observed-root beliefs using legitimate evidence
@@ -212,7 +214,7 @@ h_t = observed history, s' = possible future state (not revealed in reality), o 
 ## 8. Test-LaB reference demonstration
 
 - **Reference executable:** [tests/continuous_multiverse_v4.js](../tests/continuous_multiverse_v4.js) — Node.js 18+ standard library only, run with \`node tests/continuous_multiverse_v4.js\`.
-- **Results and verification:** [Cycle 011 — Continuous Multiverse v4](../experiments/2026-10-19-cycle-011-continuous-multiverse.md).
+- **Results and verification:** [Cycle 012 — Continuous Multiverse v4](../experiments/2026-10-19-cycle-012-continuous-multiverse.md).
 - Example intentionally contains only a Beta-Bernoulli world with 3 actions (STOP, PROBE, COMMIT), 2 possible outcomes and finite lookahead H=5, not an arbitrary physics/social/economic simulator.
 - A point updates its belief after a hypothetical or fixture observation, generates its own feasible actions, forecasts the next node and recursively evaluates all declared branches. Each observed fixture point rebuilds a new H=5 tree.
 - Existing tools only: Node.js for arithmetic, Markdown for instructions/evidence, GitHub for versioned records. **No framework, new Plugin, external service, database, cron, or autonomous app.**
