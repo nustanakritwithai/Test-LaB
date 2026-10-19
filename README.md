@@ -65,6 +65,16 @@ EVIDENCE / FALLBACK: source-of-truth check and alternative if unavailable
 
 **Activation boundary:** This Markdown governs a run **when actually loaded/applied as AOM context**. Merely saving it on GitHub does not automatically install it, make it run in every new chat, or guarantee 100% tool-selection accuracy. No new Skill, Plugin, agent, scheduler or service is required by this rule.
 
+### Skill scope and instruction precedence
+
+**Negative-match gate (use when Skills have similar names):** Resolve the requested **source, native destination/format, explicit activation trigger, owning project, required operation, and target permission** before matching a Skill. Do **not** activate a Skill merely because its title/description contains a word from the task. `SKILL_LISTED` is not `SKILL_APPLICABLE`; installed but inapplicable Skills must be rejected rather than stacked.
+
+**Observed scope examples from installed instructions (2026-10-20):** The `document` router is only triggered when the user explicitly chooses `@document`; Google Docs instructions govern **native Google Docs**, Google Sheets governs **native Google Sheets**, and project-specific Sparkore KB guidance is not automatically a Test-LaB rule. For a Markdown file **in GitHub**, prefer `NO_EXTRA_SKILL` + the verified GitHub connector. Refresh these examples if installed Skill instructions change.
+
+**Instruction and source priority:** Honor the user's current authorized outcome and constraints and higher-level safety boundaries; use the original AOM V0.3 in File Library as operating source, the [Independent Development Policy](INDEPENDENT_DEVELOPMENT_POLICY.md) for project separation, this README for current routing mechanics, and `ROADMAP.md` only for **currently active** task priorities. Older `DO NEXT` directions in archived or superseded plans must not override a newer user-directed focus. Do not silently replace the original AOM or require Multiverse.
+
+**Readiness:** If an existing target is unspecified or permissions are unverified, record `ROUTE_ONLY / TARGET_UNRESOLVED` and do not inspect unrelated account content or perform a write. Only observed destination readback permits `OUTPUT_VERIFIED`. Keep the reason for rejecting a near-match short; do not search all Skills again for trivial tasks.
+
 ## Tool Discovery — GitHub-first when existing capabilities are insufficient
 
 **AOM source-selection decision (2026-10-20):** Keep AOM as Markdown and use GitHub as the **primary discovery source for open-source tools** when the current model and connected/installed tools do not adequately fulfill a real objective. GitHub is a source of **candidates**, not an automatic trust, deployment, or installation authority.
