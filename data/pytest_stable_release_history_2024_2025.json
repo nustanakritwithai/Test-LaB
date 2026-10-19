@@ -1,0 +1,218 @@
+{
+  "source": "pytest-dev/pytest GitHub REST releases",
+  "observedAt": "2026-10-20",
+  "method": "public read-only releases per_page=10; UTC published_at; 2024-01-01 cutoff",
+  "completeCutoff": true,
+  "pages": 3,
+  "entriesFetched": 30,
+  "stoppingReason": "OLDER_THAN_2024_UTC",
+  "releases": [
+    {
+      "id": 268037113,
+      "tag_name": "9.0.2",
+      "published_at": "2025-12-06T21:31:16Z",
+      "created_at": "2025-12-06T21:31:03Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/pytest-dev/pytest/releases/tag/9.0.2"
+    },
+    {
+      "id": 261746811,
+      "tag_name": "9.0.1",
+      "published_at": "2025-11-12T13:05:30Z",
+      "created_at": "2025-11-12T13:05:19Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/pytest-dev/pytest/releases/tag/9.0.1"
+    },
+    {
+      "id": 260855995,
+      "tag_name": "9.0.0",
+      "published_at": "2025-11-08T17:37:52Z",
+      "created_at": "2025-11-08T17:25:43Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/pytest-dev/pytest/releases/tag/9.0.0"
+    },
+    {
+      "id": 244807376,
+      "tag_name": "8.4.2",
+      "published_at": "2025-09-04T14:35:52Z",
+      "created_at": "2025-09-04T14:34:24Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/pytest-dev/pytest/releases/tag/8.4.2"
+    },
+    {
+      "id": 226059725,
+      "tag_name": "8.4.1",
+      "published_at": "2025-06-18T05:48:45Z",
+      "created_at": "2025-06-18T05:48:07Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/pytest-dev/pytest/releases/tag/8.4.1"
+    },
+    {
+      "id": 222503969,
+      "tag_name": "8.4.0",
+      "published_at": "2025-06-02T17:37:58Z",
+      "created_at": "2025-06-02T17:36:32Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/pytest-dev/pytest/releases/tag/8.4.0"
+    },
+    {
+      "id": 203219661,
+      "tag_name": "8.3.5",
+      "published_at": "2025-03-02T12:56:47Z",
+      "created_at": "2025-03-02T12:54:56Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/pytest-dev/pytest/releases/tag/8.3.5"
+    },
+    {
+      "id": 188347250,
+      "tag_name": "8.3.4",
+      "published_at": "2024-12-01T13:01:48Z",
+      "created_at": "2024-12-01T12:58:58Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/pytest-dev/pytest/releases/tag/8.3.4"
+    },
+    {
+      "id": 174306860,
+      "tag_name": "8.3.3",
+      "published_at": "2024-09-10T10:53:49Z",
+      "created_at": "2024-09-10T10:52:16Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/pytest-dev/pytest/releases/tag/8.3.3"
+    },
+    {
+      "id": 167104444,
+      "tag_name": "8.3.2",
+      "published_at": "2024-07-25T10:40:33Z",
+      "created_at": "2024-07-25T10:40:02Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/pytest-dev/pytest/releases/tag/8.3.2"
+    },
+    {
+      "id": 166359538,
+      "tag_name": "8.3.1",
+      "published_at": "2024-07-20T16:25:36Z",
+      "created_at": "2024-07-20T16:25:05Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/pytest-dev/pytest/releases/tag/8.3.1"
+    },
+    {
+      "id": 166358038,
+      "tag_name": "8.3.0",
+      "published_at": "2024-07-20T15:33:08Z",
+      "created_at": "2024-07-20T15:32:31Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/pytest-dev/pytest/releases/tag/8.3.0"
+    },
+    {
+      "id": 158805631,
+      "tag_name": "8.2.2",
+      "published_at": "2024-06-04T13:39:01Z",
+      "created_at": "2024-06-04T13:38:11Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/pytest-dev/pytest/releases/tag/8.2.2"
+    },
+    {
+      "id": 156426072,
+      "tag_name": "8.2.1",
+      "published_at": "2024-05-19T19:08:47Z",
+      "created_at": "2024-05-19T19:08:06Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/pytest-dev/pytest/releases/tag/8.2.1"
+    },
+    {
+      "id": 153109339,
+      "tag_name": "8.2.0",
+      "published_at": "2024-04-27T23:35:31Z",
+      "created_at": "2024-04-27T23:34:57Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/pytest-dev/pytest/releases/tag/8.2.0"
+    },
+    {
+      "id": 153035668,
+      "tag_name": "8.1.2",
+      "published_at": "2024-04-26T18:05:59Z",
+      "created_at": "2024-04-26T18:05:19Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/pytest-dev/pytest/releases/tag/8.1.2"
+    },
+    {
+      "id": 145615300,
+      "tag_name": "8.1.1",
+      "published_at": "2024-03-09T11:51:50Z",
+      "created_at": "2024-03-09T11:51:10Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/pytest-dev/pytest/releases/tag/8.1.1"
+    },
+    {
+      "id": 144555737,
+      "tag_name": "8.1.0",
+      "published_at": "2024-03-03T21:24:40Z",
+      "created_at": "2024-03-03T21:23:45Z",
+      "prerelease": true,
+      "draft": false,
+      "html_url": "https://github.com/pytest-dev/pytest/releases/tag/8.1.0"
+    },
+    {
+      "id": 143501614,
+      "tag_name": "8.0.2",
+      "published_at": "2024-02-24T22:22:07Z",
+      "created_at": "2024-02-24T22:21:33Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/pytest-dev/pytest/releases/tag/8.0.2"
+    },
+    {
+      "id": 142415944,
+      "tag_name": "8.0.1",
+      "published_at": "2024-02-16T22:09:12Z",
+      "created_at": "2024-02-16T22:08:31Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/pytest-dev/pytest/releases/tag/8.0.1"
+    },
+    {
+      "id": 138794596,
+      "tag_name": "8.0.0",
+      "published_at": "2024-01-27T21:58:13Z",
+      "created_at": "2024-01-27T21:47:59Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/pytest-dev/pytest/releases/tag/8.0.0"
+    },
+    {
+      "id": 137460421,
+      "tag_name": "8.0.0rc2",
+      "published_at": "2024-01-17T21:41:21Z",
+      "created_at": "2024-01-17T21:40:45Z",
+      "prerelease": true,
+      "draft": false,
+      "html_url": "https://github.com/pytest-dev/pytest/releases/tag/8.0.0rc2"
+    },
+    {
+      "id": 135509455,
+      "tag_name": "8.0.0rc1",
+      "published_at": "2024-01-02T08:56:45Z",
+      "created_at": "2024-01-02T08:46:26Z",
+      "prerelease": true,
+      "draft": false,
+      "html_url": "https://github.com/pytest-dev/pytest/releases/tag/8.0.0rc1"
+    }
+  ]
+}
