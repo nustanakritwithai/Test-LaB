@@ -8,6 +8,7 @@ prior_reference: "world-model/CONTINUOUS_MULTIVERSE_v4.md"
 test_reference: "tests/horizon_aware_multiverse_v4_2.js"
 experiment_reference: "experiments/2026-10-20-cycle-017-horizon-aware-results.md"
 no_skill_merger: true
+real_world_evidence_gate: "world-model/REAL_WORLD_EVIDENCE_GATE_v4_2_1.md"
 production_mutation: false
 ---
 
@@ -16,6 +17,10 @@ production_mutation: false
 > ทุกจุดคือจุดตัดสินใจ จุดสร้างจักรวาลใหม่ และจุดเรียนรู้ แต่การตัดสินใจต้องไม่ถูกจำกัดเพียงเพราะ horizon ของการคำนวณสั้นกว่าระยะคืนทุนของเส้นทางนั้น
 
 **Independent-development rule:** v4.2 is research under the standalone Multiverse project only. It is **not** an AOM layer or a combined Skill. See [Independent Development Policy](../INDEPENDENT_DEVELOPMENT_POLICY.md). The original [v4.0.1](CONTINUOUS_MULTIVERSE_v4.md) remains untouched by this candidate.
+
+**Real-world integrity addendum — 2026-10-20:** For analyses involving live/public social, political, economic or other real-world events, **apply [Multiverse v4.2.1 Real-World Evidence Gate](REAL_WORLD_EVIDENCE_GATE_v4_2_1.md) BEFORE constructing the observed S0 or any hypothetical future branch.** Validate original source attribution, publication/event cutoff, scope and denominator, planned-versus-realized outcomes, reporting independence, open-world UNKNOWN states, and the permitted analysis mode. When probabilities and causal transitions are unvalidated, use QUALITATIVE_SCENARIOS only and prohibit numeric policy certificates. The v4.2 toy Beta-Bernoulli state and sound terminal bounds must not be transferred to unrelated real-world settings. The separate v4.2.1 gate has 65 offline structural and logic tests; it is **not** evidence of real political forecast accuracy and it does not independently access or verify source webpages.
+
+
 
 ## 1. Problem actually observed
 
