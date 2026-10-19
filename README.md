@@ -13,6 +13,25 @@
 7. **Observe real outcomes:** A tool call succeeding is not proof a business objective was achieved.
 8. **Protect boundaries:** This is a public experimental repository. Do not publish private customer information, account data, secrets, or non-public analytics. Destructive, external or irreversible changes require separate authorization.
 
+## Tool Discovery — GitHub-first when existing capabilities are insufficient
+
+**AOM source-selection decision (2026-10-20):** Keep AOM as Markdown and use GitHub as the **primary discovery source for open-source tools** when the current model and connected/installed tools do not adequately fulfill a real objective. GitHub is a source of **candidates**, not an automatic trust, deployment, or installation authority.
+
+**Selection order (not a mandate to search for every trivial request):**
+
+1. **Use what already works:** Start with native model capabilities and actually available Skills, Plugins, Connectors, hosted services and official provider tools. If an existing route meets the objective with reasonable total cost, use it without a GitHub search.
+2. **Gap confirmed → GitHub-first open-source discovery:** Define the missing capability and acceptance criteria, then use the connected GitHub search/fetch tools to discover maintained official projects and community alternatives. Prefer the upstream maintainer's canonical repo; curated “awesome” lists are discovery pointers, not proof of quality.
+3. **Compare realistic options, including KEEP / DO NOTHING:** Shortlist only useful candidates (typically 2–3); compare expected outcome, platform compatibility, license, current availability, installation burden, human attention, token/tool use, money, maintenance, reversibility and displaced opportunities. A commercial or already connected tool can win if it is more reliable and cost-effective.
+4. **Security and authenticity gate:** Inspect owner/upstream identity, release history/activity, open/closed issues, dependency and security signals, required access scopes, code/setup behavior, license and documentation. Stars, forks, badges or an impressive README **do not certify security, correctness, permission, availability or production readiness**. Do not execute unreviewed scripts, install arbitrary dependencies in production, grant high-privilege tokens or send private data to an unknown project. Test only in an appropriately isolated sandbox and with authorization.
+5. **Tool access gate:** `DISCOVERED` ≠ `CONNECTED` ≠ `TESTED` ≠ `VERIFIED`. A public GitHub repo may require a local runtime, hosting or configuration not available in this session. Do not claim it can be used directly until the required integration/access and destination result are confirmed. If a tool/connector fails, **SKIP** and choose a viable alternate route; no looping through connection troubleshooting.
+6. **Decision & evidence:** Return `DO / TEST / WATCH / DROP`; note the verified repo URL, version/commit when material, source of trust, caveats and the evidence needed to change the choice. Prefer read-only/small reversible tests before adoption. **Build new code, Skills, Plugins or apps last**, and only when the value gap has been demonstrated.
+
+**Sample discovery sources, NOT pre-approved installations:**
+- [MCP reference implementations](https://github.com/modelcontextprotocol/servers) — its own README warns these examples are educational references, **not production-ready by default**, and points users toward the [MCP Registry](https://registry.modelcontextprotocol.io/) for published servers.
+- [Community MCP list](https://github.com/wong2/awesome-mcp-servers) — useful for breadth of discovery, but each linked repo still needs independent quality/security validation.
+
+**Evidence policy:** A repository exists → `FACT`; it solves this task → `HYPOTHESIS` until verified; it is safe/connected → `UNKNOWN` until checked. Do not substitute GitHub popularity or synthetic tool scores for actual use outcomes.
+
 ## Continuous Multiverse v4 — active protocol for multistep decisions
 
 For multi-step opportunity decisions, follow **[Continuous Multiverse World Model v4](world-model/CONTINUOUS_MULTIVERSE_v4.md)** *in addition to* the outcome-first and capability-first rules above:
