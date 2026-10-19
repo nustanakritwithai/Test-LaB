@@ -5,6 +5,7 @@ status: "TEST_CANDIDATE_ONLY / NOT_ADOPTED"
 parent: "world-model/CONTINUOUS_MULTIVERSE_v4.md"
 reference_test: "tests/bounded_multiverse_v4_1.js"
 production_mutations: false
+v4_spec_budget_fix_applied_after_candidate_test: true
 ---
 
 # Bounded Multiverse v4.1 — Shared Resource Budget Candidate
@@ -128,3 +129,8 @@ The full run matches the original model's 1,678 nodes, 339 decision nodes, 1,339
 - Autonomous continuous execution; production readiness.
 
 **Current decision:** TEST this isolated candidate and compare it on read-only historical problems first; do not rewrite active v4 or AOM solely because these toy fixtures pass.
+
+
+## Post-test status — v4.0.1 correction
+
+The original v4 Markdown was subsequently updated **only in its resource-budget planning pseudocode** (Git commit fd18dc5c46f6548d1695a339b4aaa1a5e3c779dd) to prevent reusing an undebited budget at every child. This **does not adopt all v4.1 candidate features** nor establish behavioral/real-world superiority. The standalone reference and its full toy assumptions remain available for regression testing. AOM V0.3 and all user production systems remain unchanged.
