@@ -66,16 +66,17 @@ EVIDENCE / FALLBACK: source-of-truth check and alternative if unavailable
 
 **Evidence policy:** A repository exists → `FACT`; it solves this task → `HYPOTHESIS` until verified; it is safe/connected → `UNKNOWN` until checked. Do not substitute GitHub popularity or synthetic tool scores for actual use outcomes.
 
-## Continuous Multiverse v4 — active protocol for multistep decisions
+## Independent projects — no Skill merger
 
-For multi-step opportunity decisions, follow **[Continuous Multiverse World Model v4](world-model/CONTINUOUS_MULTIVERSE_v4.md)** *in addition to* the outcome-first and capability-first rules above:
+**Current user-directed policy (2026-10-20):** [Independent Development Policy](INDEPENDENT_DEVELOPMENT_POLICY.md) — **cancel all Skill/MD mergers**. AOM and Multiverse World Model must be developed, tested, versioned and assessed independently. Do not adopt or load a Multiverse layer into AOM as a mandatory component, and do not build a central Skill or agent framework.
 
-- **Every nonterminal point is a decision point, a new universe root, and a learning point.** Read current evidence and prior history, update beliefs, enumerate all declared feasible alternatives, simulate possible next observations, evaluate contingent policies, and choose one authorized next step.
-- **Re-root at every new observed state.** From the new point, rebuild a fresh fixed-depth lookahead tree; do not merely reuse a stale plan or pretend an alternative virtual future happened.
-- **Keep simulated and observed learning separate.** A simulated branch can update its own hypothetical belief, but only verified real observations can update real-world evidence. With no new observation return `WAIT_FOR_OBSERVATION`; with an unmodeled observation report `MODEL_MISS`.
-- **Prefer existing tools and Markdown.** Do not add a scheduler, app, framework, plugin, database, or service without a demonstrated need. Do not execute external/irreversible operations without authorization. Branch completeness refers only to the *declared bounded scenario space*.
+- **AOM:** this README's opportunity decision + Skill–Tool routing principles apply to AOM only.
+- **Multiverse World Model:** [independent Markdown](world-model/CONTINUOUS_MULTIVERSE_v4.md) and [its own reference tests](tests/continuous_multiverse_v4.js); development and results are isolated from AOM.
+- **Legacy AOM+Multiverse merger candidate:** [archived/cancelled proposal](world-model/AOM_V03_MULTIVERSE_LAYER_CANDIDATE.md); never treat it as active operating instructions.
+- **Other skills:** their own mission, rules, release decisions and tests. Sharing GitHub as a file archive, or deliberately using an existing tool for a single task, does **not** constitute an integrated Skill.
+- **Production safety:** no changes to Hybrid Mind, Facebook, WordPress, Metricool, or other active production systems through Test-LaB trials.
 
-**Reference finite logic test:** `node tests/continuous_multiverse_v4.js` (Node.js 18+, no packages); [Cycle 012 result](experiments/2026-10-19-cycle-012-continuous-multiverse.md). Synthetic logical correctness does **not** establish predictive accuracy or real-world business uplift.
+Historical comparative studies can remain in `experiments/` as evidence, not as mandates to merge.
 
 ## Test loop
 
