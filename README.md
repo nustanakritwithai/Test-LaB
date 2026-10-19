@@ -13,6 +13,17 @@
 7. **Observe real outcomes:** A tool call succeeding is not proof a business objective was achieved.
 8. **Protect boundaries:** This is a public experimental repository. Do not publish private customer information, account data, secrets, or non-public analytics. Destructive, external or irreversible changes require separate authorization.
 
+## Continuous Multiverse v4 — active protocol for multistep decisions
+
+For multi-step opportunity decisions, follow **[Continuous Multiverse World Model v4](world-model/CONTINUOUS_MULTIVERSE_v4.md)** *in addition to* the outcome-first and capability-first rules above:
+
+- **Every nonterminal point is a decision point, a new universe root, and a learning point.** Read current evidence and prior history, update beliefs, enumerate all declared feasible alternatives, simulate possible next observations, evaluate contingent policies, and choose one authorized next step.
+- **Re-root at every new observed state.** From the new point, rebuild a fresh fixed-depth lookahead tree; do not merely reuse a stale plan or pretend an alternative virtual future happened.
+- **Keep simulated and observed learning separate.** A simulated branch can update its own hypothetical belief, but only verified real observations can update real-world evidence. With no new observation return `WAIT_FOR_OBSERVATION`; with an unmodeled observation report `MODEL_MISS`.
+- **Prefer existing tools and Markdown.** Do not add a scheduler, app, framework, plugin, database, or service without a demonstrated need. Do not execute external/irreversible operations without authorization. Branch completeness refers only to the *declared bounded scenario space*.
+
+**Reference finite logic test:** `node tests/continuous_multiverse_v4.js` (Node.js 18+, no packages); [Cycle 012 result](experiments/2026-10-19-cycle-012-continuous-multiverse.md). Synthetic logical correctness does **not** establish predictive accuracy or real-world business uplift.
+
 ## Test loop
 
 ```text
