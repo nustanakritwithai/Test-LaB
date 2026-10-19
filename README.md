@@ -19,6 +19,8 @@
 
 ### Routing readiness: skill evidence vs tool evidence
 
+> **Provenance guard (2026-10-20, observed reporting defect):** Never label an action `EXECUTED`, `ACCESS_RESPONDED`, `SOURCE_VERIFIED`, `FIXTURE_VERIFIED` or `OUTPUT_VERIFIED` unless the **current run's actual tool invocation and returned evidence** support it. Write a compact evidence ledger: `case → selected route → invoked action(s) → observed response/target → independent check → execution verdict`. A correct guess, written URL, plausible answer, prior-turn assertion, or documentation describing how to call a tool is **not** execution evidence. If the action was only selected, use `ROUTE_ONLY`; if provenance is missing, use `UNVERIFIED` and correct earlier records visibly with a dated erratum. For simulated connector failures, use `SCENARIO_ONLY`, not `BLOCKED` by observed outage.
+
 Record **separate** states; do not inflate a discovery result into a successful task:
 
 | Layer | Evidence state | What it establishes (not what it implies) |
