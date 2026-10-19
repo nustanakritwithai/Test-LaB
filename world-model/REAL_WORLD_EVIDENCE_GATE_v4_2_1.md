@@ -66,6 +66,9 @@ claim:
 ~~~
 
 **Gates:**
+- A source URL must match the exact URL recorded at the time of external source inspection; after-the-fact URL swaps fail SOURCE_URL_MISMATCH_FROM_READBACK.
+- A Boolean claiming calibrated probabilities cannot self-authorize quantitative predictions in this offline tool. It remains QUALITATIVE_SCENARIOS until an independent source-audited calibration evaluation exists.
+
 - source_readback = READ_AND_CHECKED_EXTERNALLY means a person or connected web reader actually inspected a relevant passage. **The offline validator only checks the associated RECORD, not the external webpage.** A record can be wrong or outdated. This distinction must remain in every report.
 - Dates: source publication after information cutoff = TEMPORAL_LEAK; an updated live page after cutoff without an archived version is not valid historical S0 evidence. Explicitly record event day, publication day, retrieval day and any update day.
 - A future announced event is ANNOUNCED_FUTURE_EVENT, not an OBSERVED occurrence.
@@ -105,7 +108,7 @@ observation:
 
 - NOT_REPORTED ไม่ใช่ VERIFIED_ABSENT.
 - ไม่มีรายงานหรือข้อมูลเข้าถึงไม่ได้ ≠ จำนวนเหตุการณ์เป็นศูนย์.
-- VERIFIED_ABSENT ต้องมี coverage=COMPLETE และหลักฐานตรวจไม่พบอย่างเป็นระบบในพื้นที่/ช่วงเวลาที่กำหนด ไม่ใช่แค่ข่าวไม่พูดถึง.
+- VERIFIED_ABSENT ต้องมี coverage=COMPLETE และบันทึก negative observation ที่ตรวจจากต้นทางอย่างเป็นระบบ โดยอ้างอิง ID ที่ผ่านการตรวจแหล่งข้อมูลและตรงกับพื้นที่/ช่วงเวลาที่กำหนด ไม่ใช่เพียงใส่ Boolean หรือข่าวไม่พูดถึง. ในโปรแกรมออฟไลน์ สิ่งนี้เป็น provenance attestation ไม่ใช่การอ่านเว็บอัตโนมัติ.
 - MIXED_OR_LOCALIZED ไม่บังคับแปลงเป็น LARGE / SMALL; ต้องแยกพื้นที่หรือระบุ UNKNOWN.
 - เกณฑ์ BROAD, SIGNIFICANT, IMPLEMENTED ต้องกำหนดนิยาม จำนวน ขอบเขต และเงื่อนไขก่อนจัดหมวด
 - ถ้าโลกจริงมีผลนอกศัพท์ที่ระบุ ใช้ SCHEMA_MISS หรือ MODEL_MISS ไม่อ้างว่าแผนพยากรณ์ถูกเสมอ
@@ -186,7 +189,7 @@ REVIEW_REAL_WORLD(root, information_cutoff, work_budget):
 
 Functional reference: [tests/multiverse_real_world_evidence_v4_2_1.js](../tests/multiverse_real_world_evidence_v4_2_1.js)
 
-**65/65 deterministic offline checks PASS** across provenance metadata, crowd/arrest figures, source echoes, publication cutoff, future-event calls, policy implementation, incomplete coverage and observation ambiguity, mode escalation prevention, missing causal identification, fair scenario budgets, and fixture-only re-root.
+**71/71 deterministic offline checks PASS** across provenance metadata, crowd/arrest figures, source echoes, publication cutoff, future-event calls, policy implementation, incomplete coverage and observation ambiguity, mode escalation prevention, missing causal identification, fair scenario budgets, and fixture-only re-root.
 
 Specific counters:
 - 5 externally inspected public-source metadata records and 8 eligible *attributed* claim records, with 7 independent original-origin group IDs (not 7 independent verification methods).
