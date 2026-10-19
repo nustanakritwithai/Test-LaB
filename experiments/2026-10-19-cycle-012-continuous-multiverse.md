@@ -4,8 +4,8 @@
 **User objective:** ทุก nonterminal point ต้องเป็น Decision Point, Universe Root, Learning Point พร้อมกัน และจำลองล่วงหน้าไปจุดถัดไปอย่างต่อเนื่อง  
 **Operating instructions:** [CONTINUOUS_MULTIVERSE_v4.md](../world-model/CONTINUOUS_MULTIVERSE_v4.md)  
 **Exact reproducible script:** [tests/continuous_multiverse_v4.js](../tests/continuous_multiverse_v4.js)  
-**Result:** \`41/41 PASS\` finite deterministic *synthetic* test assertions, using the available Node.js runtime.  
-**Real business impact:** \`UNVERIFIED\`; no market observation, financial action, website update, customer data, or external business operation used.
+**Result:** `41/41 PASS` finite deterministic *synthetic* test assertions, using the available Node.js runtime.  
+**Real business impact:** `UNVERIFIED`; no market observation, financial action, website update, customer data, or external business operation used.
 
 ## 1. What changed from v3
 
@@ -14,14 +14,14 @@ The old point-2/point-3 test updated a decision in a finite preplanned tree. Thi
 1. **At every nonterminal simulated branch:** use the same decision kernel to reassess resources, belief and feasible actions; enumerate all declared outcomes; simulate the next point recursively.
 2. **At every synthetic observed point:** update belief **only** with the fixture outcome received; rebuild a new full lookahead tree of depth H=5. Do not simply descend the originally simulated tree.
 3. **At every new point:** compare all feasible choices as complete contingent policies, not pick the luckiest leaf, and consider further learning or stopping.
-4. **After STOP:** terminate; when an observation has not arrived, return \`WAIT_FOR_OBSERVATION\`; if it is outside the declared model, return \`MODEL_MISS\`.
+4. **After STOP:** terminate; when an observation has not arrived, return `WAIT_FOR_OBSERVATION`; if it is outside the declared model, return `MODEL_MISS`.
 5. **Safety:** Virtual branch learning remains hypothetical and cannot become observed evidence.
 
 All inputs/outputs are synthetic units, not amounts of real money.
 
 ## 2. Explicit finite toy world
 
-State at each point: \`{cash, alpha, beta, remaining, mode, observations}\`. Beta(\alpha,\beta) models one hypothetical shared Bernoulli success rate, with initial Beta(1,1). A successful PROBE and a successful COMMIT are assumed to be conditionally comparable evidence **within this toy environment only**.
+State at each point: `{cash, alpha, beta, remaining, mode, observations}`. Beta(\alpha,\beta) models one hypothetical shared Bernoulli success rate, with initial Beta(1,1). A successful PROBE and a successful COMMIT are assumed to be conditionally comparable evidence **within this toy environment only**.
 
 - STOP: terminate with no additional gain.
 - PROBE: pay 1 unit, observe SUCCESS/FAILURE, update Beta; retain ability to choose later.
@@ -103,6 +103,6 @@ The 41 assertions are **logic fixtures**. They do not establish model accuracy f
 
 To claim real skill improvement, freeze a task/decision and a genuine baseline **before** collecting future observations; record pre-action predictions, real observations, unique event IDs, model version, matched resource budgets and proper scoring. Compare accuracy and achieved outcome across independent cases (and holdout cases when possible). Sensitive evidence must remain outside this public repo.
 
-**Verdict:** \`CONTINUOUS_RECEDING_HORIZON_LOGIC_PASS / BRANCH_LOCAL_LEARNING_PASS / REAL_WORLD_AUTONOMY_NOT_IMPLEMENTED / PREDICTIVE_ACCURACY_UNVERIFIED\`.
+**Verdict:** `CONTINUOUS_RECEDING_HORIZON_LOGIC_PASS / BRANCH_LOCAL_LEARNING_PASS / REAL_WORLD_AUTONOMY_NOT_IMPLEMENTED / PREDICTIVE_ACCURACY_UNVERIFIED`.
 
 **Record policy:** Existing GitHub + Markdown for instructions and evidence, one small Node.js assertion script as a reproducibility artifact; no orchestrator, new service, Skill package, Plugin, database or scheduled runner created.
