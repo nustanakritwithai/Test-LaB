@@ -1,0 +1,778 @@
+{
+  "repo": "astral-sh/ruff",
+  "pageFrom": 9,
+  "pageTo": 16,
+  "stop": null,
+  "entries": [
+    {
+      "id": 205673287,
+      "tag_name": "0.10.0",
+      "published_at": "2025-03-13T18:43:16Z",
+      "created_at": "2025-03-13T17:53:11Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.10.0"
+    },
+    {
+      "id": 204406379,
+      "tag_name": "0.9.10",
+      "published_at": "2025-03-07T15:32:55Z",
+      "created_at": "2025-03-07T15:00:08Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.9.10"
+    },
+    {
+      "id": 202990893,
+      "tag_name": "0.9.9",
+      "published_at": "2025-02-28T10:22:17Z",
+      "created_at": "2025-02-28T09:17:38Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.9.9"
+    },
+    {
+      "id": 202807824,
+      "tag_name": "0.9.8",
+      "published_at": "2025-02-27T14:15:43Z",
+      "created_at": "2025-02-27T13:56:11Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.9.8"
+    },
+    {
+      "id": 201433019,
+      "tag_name": "0.9.7",
+      "published_at": "2025-02-20T13:51:39Z",
+      "created_at": "2025-02-20T13:12:11Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.9.7"
+    },
+    {
+      "id": 199369278,
+      "tag_name": "0.9.6",
+      "published_at": "2025-02-10T13:04:38Z",
+      "created_at": "2025-02-10T12:44:04Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.9.6"
+    },
+    {
+      "id": 198910819,
+      "tag_name": "0.9.5",
+      "published_at": "2025-02-06T19:52:12Z",
+      "created_at": "2025-02-06T19:24:45Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.9.5"
+    },
+    {
+      "id": 197637137,
+      "tag_name": "0.9.4",
+      "published_at": "2025-01-30T18:14:28Z",
+      "created_at": "2025-01-30T17:29:22Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.9.4"
+    },
+    {
+      "id": 196501024,
+      "tag_name": "0.9.3",
+      "published_at": "2025-01-23T19:33:59Z",
+      "created_at": "2025-01-23T19:14:58Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.9.3"
+    },
+    {
+      "id": 195161903,
+      "tag_name": "0.9.2",
+      "published_at": "2025-01-16T15:51:33Z",
+      "created_at": "2025-01-16T15:30:01Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.9.2"
+    },
+    {
+      "id": 194175171,
+      "tag_name": "0.9.1",
+      "published_at": "2025-01-10T19:02:51Z",
+      "created_at": "2025-01-10T18:45:06Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.9.1"
+    },
+    {
+      "id": 193916171,
+      "tag_name": "0.9.0",
+      "published_at": "2025-01-09T14:12:39Z",
+      "created_at": "2025-01-09T13:53:08Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.9.0"
+    },
+    {
+      "id": 193160780,
+      "tag_name": "0.8.6",
+      "published_at": "2025-01-04T12:27:40Z",
+      "created_at": "2025-01-04T12:09:26Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.8.6"
+    },
+    {
+      "id": 192917417,
+      "tag_name": "0.8.5",
+      "published_at": "2025-01-02T12:09:07Z",
+      "created_at": "2025-01-02T11:51:21Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.8.5"
+    },
+    {
+      "id": 191663070,
+      "tag_name": "0.8.4",
+      "published_at": "2024-12-19T13:41:08Z",
+      "created_at": "2024-12-19T13:15:42Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.8.4"
+    },
+    {
+      "id": 190459490,
+      "tag_name": "0.8.3",
+      "published_at": "2024-12-12T15:22:29Z",
+      "created_at": "2024-12-12T14:59:48Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.8.3"
+    },
+    {
+      "id": 189172627,
+      "tag_name": "0.8.2",
+      "published_at": "2024-12-05T12:53:46Z",
+      "created_at": "2024-12-05T12:36:35Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.8.2"
+    },
+    {
+      "id": 188126295,
+      "tag_name": "0.8.1",
+      "published_at": "2024-11-29T03:34:26Z",
+      "created_at": "2024-11-29T03:15:36Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.8.1"
+    },
+    {
+      "id": 186828677,
+      "tag_name": "0.8.0",
+      "published_at": "2024-11-22T10:12:40Z",
+      "created_at": "2024-11-22T07:47:14Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.8.0"
+    },
+    {
+      "id": 185615932,
+      "tag_name": "0.7.4",
+      "published_at": "2024-11-15T11:37:53Z",
+      "created_at": "2024-11-15T11:17:32Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.7.4"
+    },
+    {
+      "id": 184342078,
+      "tag_name": "0.7.3",
+      "published_at": "2024-11-08T11:27:13Z",
+      "created_at": "2024-11-08T11:09:37Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.7.3"
+    },
+    {
+      "id": 183128450,
+      "tag_name": "0.7.2",
+      "published_at": "2024-11-01T16:09:13Z",
+      "created_at": "2024-11-01T15:55:19Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.7.2"
+    },
+    {
+      "id": 181760192,
+      "tag_name": "0.7.1",
+      "published_at": "2024-10-24T15:45:22Z",
+      "created_at": "2024-10-24T15:27:07Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.7.1"
+    },
+    {
+      "id": 180527426,
+      "tag_name": "0.7.0",
+      "published_at": "2024-10-17T19:36:01Z",
+      "created_at": "2024-10-17T16:14:21Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.7.0"
+    },
+    {
+      "id": 178412391,
+      "tag_name": "0.6.9",
+      "published_at": "2024-10-04T13:44:11Z",
+      "created_at": "2024-10-04T13:21:13Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.6.9"
+    },
+    {
+      "id": 177055340,
+      "tag_name": "0.6.8",
+      "published_at": "2024-09-26T12:31:23Z",
+      "created_at": "2024-09-26T12:09:03Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.6.8"
+    },
+    {
+      "id": 176243142,
+      "tag_name": "0.6.7",
+      "published_at": "2024-09-21T17:39:51Z",
+      "created_at": "2024-09-21T17:16:36Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.6.7"
+    },
+    {
+      "id": 176022010,
+      "tag_name": "0.6.6",
+      "published_at": "2024-09-20T03:32:06Z",
+      "created_at": "2024-09-20T03:09:57Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.6.6"
+    },
+    {
+      "id": 174980127,
+      "tag_name": "0.6.5",
+      "published_at": "2024-09-13T15:03:50Z",
+      "created_at": "2024-09-13T14:42:26Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.6.5"
+    },
+    {
+      "id": 173683023,
+      "tag_name": "0.6.4",
+      "published_at": "2024-09-05T15:55:33Z",
+      "created_at": "2024-09-05T15:35:15Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.6.4"
+    },
+    {
+      "id": 172594569,
+      "tag_name": "0.6.3",
+      "published_at": "2024-08-29T15:20:27Z",
+      "created_at": "2024-08-29T14:59:33Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.6.3"
+    },
+    {
+      "id": 171483019,
+      "tag_name": "0.6.2",
+      "published_at": "2024-08-22T13:51:06Z",
+      "created_at": "2024-08-22T13:29:27Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.6.2"
+    },
+    {
+      "id": 170594284,
+      "tag_name": "0.6.1",
+      "published_at": "2024-08-16T17:08:45Z",
+      "created_at": "2024-08-16T16:48:06Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.6.1"
+    },
+    {
+      "id": 170347142,
+      "tag_name": "0.6.0",
+      "published_at": "2024-08-15T12:39:28Z",
+      "created_at": "2024-08-15T12:17:22Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.6.0"
+    },
+    {
+      "id": 169362274,
+      "tag_name": "0.5.7",
+      "published_at": "2024-08-08T15:46:40Z",
+      "created_at": "2024-08-08T15:26:15Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.5.7"
+    },
+    {
+      "id": 168471976,
+      "tag_name": "0.5.6",
+      "published_at": "2024-08-02T15:56:11Z",
+      "created_at": "2024-08-02T15:35:14Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.5.6"
+    },
+    {
+      "id": 167155450,
+      "tag_name": "0.5.5",
+      "published_at": "2024-07-25T15:07:51Z",
+      "created_at": "2024-07-25T14:47:01Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.5.5"
+    },
+    {
+      "id": 166364212,
+      "tag_name": "0.5.4",
+      "published_at": "2024-07-20T18:06:04Z",
+      "created_at": "2024-07-20T17:46:15Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.5.4"
+    },
+    {
+      "id": 166098481,
+      "tag_name": "0.5.3",
+      "published_at": "2024-07-18T17:10:02Z",
+      "created_at": "2024-07-18T16:49:38Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.5.3"
+    },
+    {
+      "id": 165353262,
+      "tag_name": "0.5.2",
+      "published_at": "2024-07-14T15:11:30Z",
+      "created_at": "2024-07-14T14:47:51Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.5.2"
+    },
+    {
+      "id": 164162647,
+      "tag_name": "0.5.1",
+      "published_at": "2024-07-05T13:30:22Z",
+      "created_at": "2024-07-05T13:12:49Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.5.1"
+    },
+    {
+      "id": 162813423,
+      "tag_name": "0.5.0",
+      "published_at": "2024-06-27T15:42:40Z",
+      "created_at": "2024-06-27T15:16:05Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/0.5.0"
+    },
+    {
+      "id": 161530768,
+      "tag_name": "v0.4.10",
+      "published_at": "2024-06-20T17:46:34Z",
+      "created_at": "2024-06-20T17:43:13Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.4.10"
+    },
+    {
+      "id": 160523853,
+      "tag_name": "v0.4.9",
+      "published_at": "2024-06-14T15:21:46Z",
+      "created_at": "2024-06-14T15:19:47Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.4.9"
+    },
+    {
+      "id": 159023602,
+      "tag_name": "v0.4.8",
+      "published_at": "2024-06-05T15:36:36Z",
+      "created_at": "2024-06-05T15:34:08Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.4.8"
+    },
+    {
+      "id": 158411292,
+      "tag_name": "v0.4.7",
+      "published_at": "2024-05-31T21:25:09Z",
+      "created_at": "2024-05-31T20:44:31Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.4.7"
+    },
+    {
+      "id": 157860894,
+      "tag_name": "v0.4.6",
+      "published_at": "2024-05-29T02:06:55Z",
+      "created_at": "2024-05-28T19:22:32Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.4.6"
+    },
+    {
+      "id": 157019983,
+      "tag_name": "v0.4.5",
+      "published_at": "2024-05-23T02:14:31Z",
+      "created_at": "2024-05-23T01:30:45Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.4.5"
+    },
+    {
+      "id": 154981318,
+      "tag_name": "v0.4.4",
+      "published_at": "2024-05-09T17:24:16Z",
+      "created_at": "2024-05-09T17:13:37Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.4.4"
+    },
+    {
+      "id": 154194887,
+      "tag_name": "v0.4.3",
+      "published_at": "2024-05-03T23:14:46Z",
+      "created_at": "2024-05-03T23:03:24Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.4.3"
+    },
+    {
+      "id": 152858317,
+      "tag_name": "v0.4.2",
+      "published_at": "2024-04-25T17:55:24Z",
+      "created_at": "2024-04-25T17:52:35Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.4.2"
+    },
+    {
+      "id": 151924168,
+      "tag_name": "v0.4.1",
+      "published_at": "2024-04-19T12:32:43Z",
+      "created_at": "2024-04-19T12:28:12Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.4.1"
+    },
+    {
+      "id": 151814380,
+      "tag_name": "v0.4.0",
+      "published_at": "2024-04-18T19:53:59Z",
+      "created_at": "2024-04-18T19:51:35Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.4.0"
+    },
+    {
+      "id": 150866394,
+      "tag_name": "v0.3.7",
+      "published_at": "2024-04-12T03:55:57Z",
+      "created_at": "2024-04-12T03:54:56Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.3.7"
+    },
+    {
+      "id": 150790729,
+      "tag_name": "v0.3.6",
+      "published_at": "2024-04-11T16:29:59Z",
+      "created_at": "2024-04-11T16:24:59Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.3.6"
+    },
+    {
+      "id": 149263727,
+      "tag_name": "v0.3.5",
+      "published_at": "2024-04-01T17:41:25Z",
+      "created_at": "2024-04-01T17:36:53Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.3.5"
+    },
+    {
+      "id": 147799029,
+      "tag_name": "v0.3.4",
+      "published_at": "2024-03-23T13:29:30Z",
+      "created_at": "2024-03-21T19:21:39Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.3.4"
+    },
+    {
+      "id": 146828146,
+      "tag_name": "v0.3.3",
+      "published_at": "2024-03-15T18:13:40Z",
+      "created_at": "2024-03-15T18:06:34Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.3.3"
+    },
+    {
+      "id": 145578797,
+      "tag_name": "v0.3.2",
+      "published_at": "2024-03-09T01:24:49Z",
+      "created_at": "2024-03-09T00:51:15Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.3.2"
+    },
+    {
+      "id": 145157128,
+      "tag_name": "v0.3.1",
+      "published_at": "2024-03-06T22:47:24Z",
+      "created_at": "2024-03-06T22:43:46Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.3.1"
+    },
+    {
+      "id": 144218555,
+      "tag_name": "v0.3.0",
+      "published_at": "2024-02-29T15:30:59Z",
+      "created_at": "2024-02-29T15:20:51Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.3.0"
+    },
+    {
+      "id": 142474781,
+      "tag_name": "v0.2.2",
+      "published_at": "2024-02-17T22:41:45Z",
+      "created_at": "2024-02-17T22:36:50Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.2.2"
+    },
+    {
+      "id": 140000894,
+      "tag_name": "v0.2.1",
+      "published_at": "2024-02-05T22:46:26Z",
+      "created_at": "2024-02-05T22:29:31Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.2.1"
+    },
+    {
+      "id": 139593950,
+      "tag_name": "v0.2.0",
+      "published_at": "2024-02-01T23:32:41Z",
+      "created_at": "2024-02-01T23:22:30Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.2.0"
+    },
+    {
+      "id": 139023545,
+      "tag_name": "v0.1.15",
+      "published_at": "2024-01-30T00:46:41Z",
+      "created_at": "2024-01-29T23:06:20Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.1.15"
+    },
+    {
+      "id": 137795765,
+      "tag_name": "v0.1.14",
+      "published_at": "2024-01-19T20:22:26Z",
+      "created_at": "2024-01-19T20:19:50Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.1.14"
+    },
+    {
+      "id": 136850447,
+      "tag_name": "v0.1.13",
+      "published_at": "2024-01-12T15:52:51Z",
+      "created_at": "2024-01-12T15:04:21Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.1.13"
+    },
+    {
+      "id": 136747184,
+      "tag_name": "v0.1.12",
+      "published_at": "2024-01-11T22:52:59Z",
+      "created_at": "2024-01-11T22:48:02Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.1.12"
+    },
+    {
+      "id": 135615061,
+      "tag_name": "v0.1.11",
+      "published_at": "2024-01-02T23:05:09Z",
+      "created_at": "2024-01-02T22:59:24Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.1.11"
+    },
+    {
+      "id": 135573951,
+      "tag_name": "v0.1.10",
+      "published_at": "2024-01-02T18:27:20Z",
+      "created_at": "2024-01-02T18:23:00Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.1.10"
+    },
+    {
+      "id": 134821330,
+      "tag_name": "v0.1.9",
+      "published_at": "2023-12-21T18:46:59Z",
+      "created_at": "2023-12-21T18:42:56Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.1.9"
+    },
+    {
+      "id": 133796017,
+      "tag_name": "v0.1.8",
+      "published_at": "2023-12-13T19:15:17Z",
+      "created_at": "2023-12-13T18:43:48Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.1.8"
+    },
+    {
+      "id": 132577548,
+      "tag_name": "v0.1.7",
+      "published_at": "2023-12-04T23:28:33Z",
+      "created_at": "2023-12-04T21:55:03Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.1.7"
+    },
+    {
+      "id": 130009547,
+      "tag_name": "v0.1.6",
+      "published_at": "2023-11-17T18:52:35Z",
+      "created_at": "2023-11-17T18:46:30Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.1.6"
+    },
+    {
+      "id": 128629377,
+      "tag_name": "v0.1.5",
+      "published_at": "2023-11-08T23:19:55Z",
+      "created_at": "2023-11-08T23:11:34Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.1.5"
+    },
+    {
+      "id": 127944503,
+      "tag_name": "v0.1.4",
+      "published_at": "2023-11-03T21:39:54Z",
+      "created_at": "2023-11-03T21:30:36Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.1.4"
+    },
+    {
+      "id": 126840534,
+      "tag_name": "v0.1.3",
+      "published_at": "2023-10-26T19:31:27Z",
+      "created_at": "2023-10-26T19:26:34Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.1.3"
+    },
+    {
+      "id": 126447121,
+      "tag_name": "v0.1.2",
+      "published_at": "2023-10-24T15:56:25Z",
+      "created_at": "2023-10-24T15:52:15Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.1.2"
+    },
+    {
+      "id": 125877827,
+      "tag_name": "v0.1.1",
+      "published_at": "2023-10-19T21:24:49Z",
+      "created_at": "2023-10-19T21:21:17Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.1.1"
+    },
+    {
+      "id": 125304707,
+      "tag_name": "v0.1.0",
+      "published_at": "2023-10-16T19:51:17Z",
+      "created_at": "2023-10-16T19:41:04Z",
+      "prerelease": false,
+      "draft": false,
+      "html_url": "https://github.com/astral-sh/ruff/releases/tag/v0.1.0"
+    }
+  ],
+  "pageEvidence": [
+    {
+      "page": 9,
+      "count": 10,
+      "latest": "2025-03-13T18:43:16Z",
+      "oldest": "2025-01-16T15:51:33Z"
+    },
+    {
+      "page": 10,
+      "count": 10,
+      "latest": "2025-01-10T19:02:51Z",
+      "oldest": "2024-11-15T11:37:53Z"
+    },
+    {
+      "page": 11,
+      "count": 10,
+      "latest": "2024-11-08T11:27:13Z",
+      "oldest": "2024-09-05T15:55:33Z"
+    },
+    {
+      "page": 12,
+      "count": 10,
+      "latest": "2024-08-29T15:20:27Z",
+      "oldest": "2024-07-14T15:11:30Z"
+    },
+    {
+      "page": 13,
+      "count": 10,
+      "latest": "2024-07-05T13:30:22Z",
+      "oldest": "2024-05-03T23:14:46Z"
+    },
+    {
+      "page": 14,
+      "count": 10,
+      "latest": "2024-04-25T17:55:24Z",
+      "oldest": "2024-03-06T22:47:24Z"
+    },
+    {
+      "page": 15,
+      "count": 10,
+      "latest": "2024-02-29T15:30:59Z",
+      "oldest": "2024-01-02T18:27:20Z"
+    },
+    {
+      "page": 16,
+      "count": 10,
+      "latest": "2023-12-21T18:46:59Z",
+      "oldest": "2023-10-16T19:51:17Z"
+    }
+  ]
+}
