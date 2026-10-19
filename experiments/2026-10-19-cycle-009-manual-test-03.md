@@ -78,11 +78,15 @@ This is the **third manual AOM test**, corresponding to Cycle 009 of the larger 
 
 For a stronger next test, select a fresh externally checkable objective **before** looking at the answer, freeze candidate routes, cap resources equally, and grade against a separate truth source. Vary the task so directory-first is not guaranteed to win. If the user authorizes a reversible real-world intervention, compare a measurable downstream outcome against a genuine control or a credible baseline. Keep account analytics private rather than copying them into this public repo.
 
-## 7. Post-write verification
+## 7. Post-write verification — PASS
 
-Pending GitHub write and independent readback at authorship. A post-write check should confirm:
-1. This report can be fetched by exact path.
-2. This report appears in the `experiments/` archive without any README index change.
-3. The matched-budget table and limitations are present.
+Follow-up checks were performed using GitHub's own API after the initial Cycle 009 file creation:
 
-**Verdict:** `MATCHED-BUDGET EVIDENCE RETRIEVAL PASS; BUSINESS UPLIFT UNKNOWN`.
+1. This Markdown report was fetched back successfully by exact file path; its initial blob SHA was `89e3a821600efde5eccceec365f0dff89352127b`.
+2. GitHub's native `contents/experiments` directory listed **five Markdown reports**, including the new Cycle 009 file. That total is one higher than the **four files in the frozen pre-test oracle**; do not mix the pre-test ground truth with this post-test total.
+3. `README.md` still contained the stable `experiments/` archive link, and its blob SHA remained `caa0125903b65c3a698d342f990b8579d1a3ede9`; no README edit was made for Cycle 009.
+4. The saved report included the measured 1/4 versus 4/4 comparison and the explicit one-request limitation.
+
+**Verified result:** The chosen AOM source was complete for this live repository inventory at test time, given one GitHub read, and the experiment was durably recorded without maintaining a per-file index.
+
+**Verdict:** `MATCHED-BUDGET RETRIEVAL PASS / REPORT PERSISTENCE VERIFIED / BUSINESS UPLIFT UNVERIFIED`.
