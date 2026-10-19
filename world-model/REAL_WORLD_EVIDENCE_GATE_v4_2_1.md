@@ -70,12 +70,15 @@ claim:
 - A Boolean claiming calibrated probabilities cannot self-authorize quantitative predictions in this offline tool. It remains QUALITATIVE_SCENARIOS until an independent source-audited calibration evaluation exists.
 
 - source_readback = READ_AND_CHECKED_EXTERNALLY means a person or connected web reader actually inspected a relevant passage. **The offline validator only checks the associated RECORD, not the external webpage.** A record can be wrong or outdated. This distinction must remain in every report.
-- Dates: source publication after information cutoff = TEMPORAL_LEAK; an updated live page after cutoff without an archived version is not valid historical S0 evidence. Explicitly record event day, publication day, retrieval day and any update day.
+- Dates: source publication after information cutoff = TEMPORAL_LEAK; an updated live page after cutoff without an archived version is not valid historical S0 evidence. **If an article is read only after the claimed cutoff, it must have a specifically attested frozen pre-cutoff revision, or it is blocked as RETROSPECTIVE_SOURCE_VERSION_UNVERIFIED.** A self-declared archive field is still an attestation, not independent archive verification. Explicitly record event day, publication day, retrieval day and any update day.
 - A future announced event is ANNOUNCED_FUTURE_EVENT, not an OBSERVED occurrence.
 - Policy announcement is not implemented/effective policy. Separate implementation and measured result; require new data for promotions.
 - When a claim is unavailable/unreadable, do not mark S0 fully verified. State DATA_BLOCKED and preserve exactly what was attempted.
 - Distinguish source of writing versus **original origin**. Reuters and Le Monde echoing an interior ministry number are not two independent confirmations of its objective accuracy.
 - Never overwrite a reported count with an average invented by the model.
+- A corrected or changed count **from the same original source** is SAME_ORIGIN_REPORT_REVISION_CONFLICT, not a harmless dependent-source echo. Its previous and revised values must both remain visible until their dated provenance is reconciled.
+- A headcount/arrest count must be a finite nonnegative integer; the claimed event day must fall inside its declared measurement window, even when start/end dates are individually valid.
+- Every READ_AND_CHECKED_EXTERNALLY readback record must include an exact review date; a locator and URL without a valid review date are insufficient.
 
 **France observation example:**
 Two separate October 17 counts: 550,000 attributed to France's Interior Ministry and 800,000 attributed to organizers/CGT. Both belong in the SAME event scope but DIFFERENT original-origin groups. These are reported estimates. Neither is an independently audited exact attendance census.
@@ -109,6 +112,7 @@ observation:
 - NOT_REPORTED ไม่ใช่ VERIFIED_ABSENT.
 - ไม่มีรายงานหรือข้อมูลเข้าถึงไม่ได้ ≠ จำนวนเหตุการณ์เป็นศูนย์.
 - VERIFIED_ABSENT ต้องมี coverage=COMPLETE และบันทึก negative observation ที่ตรวจจากต้นทางอย่างเป็นระบบ โดยอ้างอิง ID ที่ผ่านการตรวจแหล่งข้อมูลและตรงกับพื้นที่/ช่วงเวลาที่กำหนด ไม่ใช่เพียงใส่ Boolean หรือข่าวไม่พูดถึง. ในโปรแกรมออฟไลน์ สิ่งนี้เป็น provenance attestation ไม่ใช่การอ่านเว็บอัตโนมัติ.
+- **VERIFIED_PRESENT ก็ต้องมีหลักฐาน**: หากไม่มีรหัส Claim ที่มีบันทึกตรวจการสังเกตโดยตรงและตรงกับพื้นที่/ช่วงเวลานั้น ให้คง UNKNOWN ไม่ยกระดับเป็น VERIFIED เพียงเพราะมีธง Boolean.
 - MIXED_OR_LOCALIZED ไม่บังคับแปลงเป็น LARGE / SMALL; ต้องแยกพื้นที่หรือระบุ UNKNOWN.
 - เกณฑ์ BROAD, SIGNIFICANT, IMPLEMENTED ต้องกำหนดนิยาม จำนวน ขอบเขต และเงื่อนไขก่อนจัดหมวด
 - ถ้าโลกจริงมีผลนอกศัพท์ที่ระบุ ใช้ SCHEMA_MISS หรือ MODEL_MISS ไม่อ้างว่าแผนพยากรณ์ถูกเสมอ
@@ -189,7 +193,7 @@ REVIEW_REAL_WORLD(root, information_cutoff, work_budget):
 
 Functional reference: [tests/multiverse_real_world_evidence_v4_2_1.js](../tests/multiverse_real_world_evidence_v4_2_1.js)
 
-**71/71 deterministic offline checks PASS** across provenance metadata, crowd/arrest figures, source echoes, publication cutoff, future-event calls, policy implementation, incomplete coverage and observation ambiguity, mode escalation prevention, missing causal identification, fair scenario budgets, and fixture-only re-root.
+**86/86 deterministic offline checks PASS** across provenance metadata, crowd/arrest figures, source echoes, publication cutoff, future-event calls, policy implementation, incomplete coverage and observation ambiguity, mode escalation prevention, missing causal identification, fair scenario budgets, and fixture-only re-root.
 
 Specific counters:
 - 5 externally inspected public-source metadata records and 8 eligible *attributed* claim records, with 7 independent original-origin group IDs (not 7 independent verification methods).
@@ -200,7 +204,9 @@ Specific counters:
 - v4.2 Bayesian toy solver is not invoked for these real-world qualitative scenarios.
 - Source-audit metadata passing a static JavaScript test is **not independent verification of live webpage contents**. The webpages were separately read to draft these cases, but the test script is offline and cannot revalidate changes.
 
-**Not yet tested:** real source updates after Oct 20, reliable causal transition estimation, real-world prediction accuracy, actual latency/token/memory usage, and real observed counterfactual interventions.
+**Additional regression hardening:** 15 new tests beyond the initial 71: same-source numeric revisions, mismatched event/measurement windows, negative/fractional person counts, undated readback, historical post-cutoff source reads without frozen snapshots, and VERIFIED_PRESENT attempts without scoped positive evidence. The original 71 checks still pass.
+
+**Not yet tested:** independently archived retrospective revisions, real source updates after Oct 20, reliable causal transition estimation, real-world prediction accuracy, actual latency/token/memory usage, and real observed counterfactual interventions.
 
 ## 8. Adoption, scope and next experiment
 
