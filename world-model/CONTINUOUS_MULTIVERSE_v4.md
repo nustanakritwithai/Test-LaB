@@ -4,16 +4,18 @@ version: "4.0.1"
 date: "2026-10-19"
 language: "th"
 artifact: "Markdown operating instructions"
-project: "AI Opportunity Manager / Test-LaB"
+project: "Independent Multiverse World Model / Test-LaB"
 source_repo: "https://github.com/nustanakritwithai/Test-LaB"
 supersedes: "world-model/ADAPTIVE_DECISION_SKILL_v3.md"
 reference_test: "tests/continuous_multiverse_v4.js"
 bounded_reference_test: "tests/bounded_multiverse_v4_1.js"
 mode: "ON_DEMAND / EVIDENCE_TRIGGERED"
-status: "FINITE_SYNTHETIC_LOGIC_VERIFIED / REAL_WORLD_PREDICTIVE_SKILL_UNVERIFIED"
+status: "INDEPENDENT_PROJECT / FINITE_SYNTHETIC_LOGIC_VERIFIED / REAL_WORLD_PREDICTIVE_SKILL_UNVERIFIED"
 ---
 
 # CONTINUOUS MULTIVERSE WORLD MODEL v4
+
+**Independent project notice (2026-10-20):** This Multiverse Markdown is developed and tested independently. It is NOT a mandatory AOM Skill, plugin, operating layer, or central system; the earlier merger proposal is cancelled. Keep its models, tests, revisions and adoption decisions separate. See [Independent Development Policy](../INDEPENDENT_DEVELOPMENT_POLICY.md). Historical AOM comparisons remain research records only.
 
 > **ทุกจุดที่ยังไม่จบภารกิจ = Decision Point + Universe Root + Learning Point**
 >
