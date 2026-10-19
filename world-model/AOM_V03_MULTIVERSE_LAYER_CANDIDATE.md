@@ -4,11 +4,15 @@ version: "C1"
 date: "2026-10-19"
 source_aom: "AI_Opportunity_Manager_V0.3.md (user Library; source not copied to public GitHub)"
 reference_model: "world-model/CONTINUOUS_MULTIVERSE_v4.md"
-status: "REVIEW_CANDIDATE / NOT DEPLOYED / NOT ADOPTED"
+status: "CANCELLED / ARCHIVE_ONLY / NEVER_DEPLOYED"
 production_changes: false
 ---
 
 # AOM V0.3 — Conditional Multiverse Decision Layer (C1)
+
+> **CANCELLED — 2026-10-20:** The user explicitly cancelled all plans to merge AOM, Multiverse, or other Skills. This file is **historical research only**, not an active proposal, optional layer, executable operating instruction, or future adoption plan. No development should resume toward integration under this file. Develop AOM and Multiverse independently according to [Independent Development Policy](../INDEPENDENT_DEVELOPMENT_POLICY.md).
+
+
 
 > **Purpose:** Apply Continuous Multiverse World Model v4 as an *optional decision-depth layer* to AOM V0.3, without replacing AOM's mission, six-step workflow, DO/TEST/WATCH/DROP classification, Skill–Tool Selection Gate, bounded autonomy, or preference for available tools. All work in this file is a Test-LaB candidate and does not modify the user's original AOM Markdown.
 
@@ -167,4 +171,4 @@ review_run:
 6. After real or historic read-only evidence appears, forecasts are scored against what was knowable **at the time** and new decisions are rerooted.
 7. Matched-budget tests show meaningful **behavioral** gains rather than only structural/checklist compliance; otherwise DO NOT ADOPT.
 
-**Current verdict:** CANDIDATE_FOR_TEST. AOM V0.3 remains the operative source; this standalone Markdown does not train a model, run a live simulation, or modify production.
+**Superseding verdict (2026-10-20):** CANCELLED / ARCHIVE ONLY. The prior candidate-for-test language is retained above solely to explain historical reasoning. No merger, default adoption, or coupling of the two projects is authorized. AOM and Multiverse follow separate development tracks.
