@@ -1,0 +1,78 @@
+{
+  "cycle": "024",
+  "date": "2026-10-20",
+  "project": "INDEPENDENT_MULTIVERSE_WORLD_MODEL",
+  "status": "DATA_BLOCKED_2021_OFFICIAL_IO_CELLS_UNAVAILABLE",
+  "source": {
+    "publisher": "National Economic and Social Development Council (NESDC)",
+    "datasetTitle": "I/O 2021 16 Sectors",
+    "observationYear": 2021,
+    "listingUrl": "https://www.nesdc.go.th/download/i-o-2021-16-sectors/",
+    "publicDownloadLink": "https://www.nesdc.go.th/?p=1543&ddl=1544",
+    "resolvedOriginalXlsxUrl": "https://www.nesdc.go.th/wp-content/uploads/2025/03/DataIO2021x16.xlsx",
+    "listingDateReported": "2025-02-25",
+    "publicationDateIsNotObservationYear": true
+  },
+  "attempts": [
+    {
+      "method": "public_document_listing_and_redirect_resolution",
+      "result": "SUCCESS_URL_LOCATED",
+      "notes": "NESDC listing identifies Excel and official download redirect resolves to a named .xlsx"
+    },
+    {
+      "method": "text_extraction_of_original_download",
+      "result": "BINARY_NOT_DECODABLE_TO_CELLS",
+      "notes": "Document extractor returned binary-like text; no reliable cell values or ZIP byte preservation"
+    },
+    {
+      "method": "download_to_execution_container",
+      "result": "NETWORK_DNS_FAILURE",
+      "notes": "Container session could not resolve external host / download did not materialize"
+    },
+    {
+      "method": "browser_download_automation",
+      "result": "PAGE_CONFIRMED_XLSX_CELLS_NOT_EXPOSED",
+      "notes": "Official Excel link present; navigation/download could not render actual sheet cells"
+    },
+    {
+      "method": "third_party_online_sheet_viewer",
+      "result": "NOT_AVAILABLE_IN_CURRENT_RUN",
+      "notes": "No verified readback"
+    }
+  ],
+  "archive": {
+    "originalFileBytesAvailable": false,
+    "sha256": null,
+    "sizeBytes": null,
+    "crcVerified": null,
+    "workbookSheetNames": null,
+    "rawSheetCellReadback": null,
+    "sourceValuationBasis": null,
+    "sourceUnit": null,
+    "verifiedMatrixCellCount": 0,
+    "expectedMatrixCellCount": 256,
+    "officialRowControlsRead": 0,
+    "officialColumnControlsRead": 0
+  },
+  "calibration": {
+    "leontiefMatrixValidated": false,
+    "official2021CoefficientsAllowed": false,
+    "automationSimulationCalibration": false,
+    "empiricalThaiPredictiveSkill": "UNVERIFIED"
+  },
+  "tooling": {
+    "schemaGate": "tests/cycle024_io2021_ingestion_gate.js",
+    "safeInspector": "scripts/cycle024_inspect_nesdc_xlsx.mjs",
+    "syntheticInspectorArtifact": "LOCAL_SYNTHETIC_FIXTURE_NOT_UPLOADED_AS_NESDC_ORIGINAL",
+    "syntheticMatrixIsOfficial": false,
+    "officialDataNeverFilledWithSyntheticValues": true
+  },
+  "related2024": {
+    "file": "data/cycle023_nesdc_flow_funds_2024_verified_excerpt.json",
+    "type": "ANNUAL_NET_FINANCIAL_FLOWS_NOT_STOCKS",
+    "verifiedByCycle023JavascriptChecks": 75,
+    "cannotUseFor2021IOCells": true
+  },
+  "noAomMerge": true,
+  "productionTouched": false
+}
