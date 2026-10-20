@@ -51,6 +51,20 @@ Commercial banking is a distinct **simplified financial ledger**, not an eighth 
 
 Cash deposits across the seven holders open at 300 toy units. BANK_RETAINED begins at 5, principal asset and borrower debt begin at 40. Thus initial accounting invariant is 300 + 5 − 40 = **265** synthetic net units. This does NOT define central-bank reserves, physical currency supply or the nation's banking-sector equity.
 
+### Crosswalk: Toy account → Thai institutional accounting family
+
+This mapping is **classification guidance, not observed financial row data**. It is not a matched 2024 social accounting matrix, and the I/O 2021 sector data have not been loaded.
+
+| Fictional account | Corresponding institutional family in standard flow-of-funds analysis | Why no exact real numerical match is claimed |
+|---|---|---|
+| H_WORK and H_OWNER | Households and nonprofit institutions serving households | Wage versus owner/rent split is an invented finer classification |
+| F_GOODS, F_INPUT and F_AUTO | Nonfinancial corporations | These three firms are toy subdivisions, not verified NESDC 2021 input-output industry definitions |
+| GOV | General government | Current government balance/transfer coefficients in the model are fictional |
+| ROW | Rest of world / nonresidents | Treating ROW as a toy deposit holder omits FX and external financial account counterparties |
+| BANK retained and loan asset | Financial corporations, especially depository institutions | Monetary reserves, regulatory deposits and lender capital are not fully reconciled to a national banking balance sheet |
+
+**Important:** NESDC's input-output **industry** dimensions and flow-of-funds **institutional** sectors are different classification systems. A single I/O sector does not equal an institution account; a real crosswalk would require independently verified industry-by-institution data. Do not use a row-level input-output coefficient as the bank or worker household's observed transaction rate.
+
 ## 3. Typed transaction journal (testable independently)
 
 Each purchase/payroll/tax/transfer between ordinary sectors is exactly:
