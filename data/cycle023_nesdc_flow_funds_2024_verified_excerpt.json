@@ -1,0 +1,251 @@
+{
+  "data_status": "OFFICIAL_2024_TABLE1_5_EXTRACTED_TEXT_RECONCILED",
+  "source": {
+    "publisher": "Office of the National Economic and Social Development Council (NESDC)",
+    "publication": "Flow-of-Funds Accounts of Thailand 2020-2024",
+    "official_download_page": "https://www.nesdc.go.th/en/download/flow-of-funds-accounts-of-thailand-2020-2024/",
+    "original_pdf": "https://www.nesdc.go.th/wp-content/uploads/2026/04/Flow-of-funds-of-Thailand-2024.pdf",
+    "source_table": "TABLE 1.5 FLOW OF FUNDS ACCOUNTS OF THAILAND 2024",
+    "source_printed_page": "- 77 -",
+    "source_secondary_control": "TABLE 3.1 (2024 financial account control total)",
+    "dataset_period": "CALENDAR_YEAR_2024",
+    "release_listing_date": "2026-04-30",
+    "extracted_at": "2026-10-20",
+    "parsed_using": "NESDC-linked PDF text extraction via TinyFish; independent indexed snippet of same PDF also viewed",
+    "pdf_binary_hash": null,
+    "visual_page_inspection": "UNAVAILABLE_DUE_SOURCE_WEB_REDIRECT",
+    "source_limit": "TEXTUAL_COLUMN_DATA_EXTRACTED; PDF pixel/page grid not independently verified"
+  },
+  "unit": "MILLION_THB",
+  "measure_type": "ANNUAL_NET_FINANCIAL_TRANSACTION_FLOWS_NOT_END_OF_PERIOD_STOCKS",
+  "sectors": [
+    {
+      "id": "NON_FINANCIAL_CORPORATIONS",
+      "label": "Non-financial corporation"
+    },
+    {
+      "id": "FINANCIAL_CORPORATIONS",
+      "label": "Financial corporation"
+    },
+    {
+      "id": "GENERAL_GOVERNMENT",
+      "label": "General government"
+    },
+    {
+      "id": "HOUSEHOLDS_NPISH",
+      "label": "Households & NPISHs"
+    },
+    {
+      "id": "REST_OF_WORLD",
+      "label": "Rest of the world"
+    }
+  ],
+  "instruments": [
+    {
+      "id": "MONETARY_GOLD_SDR",
+      "title": "Monetary gold and SDRs",
+      "net_acquisition_assets": [
+        0,
+        1374,
+        0,
+        0,
+        0
+      ],
+      "net_incurrence_liabilities": [
+        0,
+        0,
+        0,
+        0,
+        1374
+      ],
+      "published_total": 1374
+    },
+    {
+      "id": "CURRENCY_DEPOSITS",
+      "title": "Currency and deposits",
+      "net_acquisition_assets": [
+        141557,
+        147039,
+        144397,
+        569624,
+        -2281
+      ],
+      "net_incurrence_liabilities": [
+        0,
+        1013799,
+        1656,
+        0,
+        -15119
+      ],
+      "published_total": 1000336
+    },
+    {
+      "id": "DEBT_SECURITIES",
+      "title": "Securities other than shares",
+      "net_acquisition_assets": [
+        -444757,
+        1504073,
+        11373,
+        -98488,
+        26522
+      ],
+      "net_incurrence_liabilities": [
+        -72518,
+        65085,
+        718239,
+        0,
+        287917
+      ],
+      "published_total": 998723
+    },
+    {
+      "id": "LOANS",
+      "title": "Loans (mortgages/hire purchase/other)",
+      "net_acquisition_assets": [
+        186349,
+        28301,
+        42838,
+        5329,
+        -187671
+      ],
+      "net_incurrence_liabilities": [
+        -56586,
+        -437347,
+        198223,
+        338594,
+        32262
+      ],
+      "published_total": 75146
+    },
+    {
+      "id": "SHARES_EQUITY",
+      "title": "Shares and other equity",
+      "net_acquisition_assets": [
+        748230,
+        279317,
+        367373,
+        103406,
+        382437
+      ],
+      "net_incurrence_liabilities": [
+        380770,
+        922715,
+        0,
+        0,
+        577278
+      ],
+      "published_total": 1880763
+    },
+    {
+      "id": "INSURANCE_TECH_RESERVES",
+      "title": "Insurance technical reserves",
+      "net_acquisition_assets": [
+        1163,
+        0,
+        0,
+        384022,
+        1016
+      ],
+      "net_incurrence_liabilities": [
+        -52709,
+        296546,
+        142364,
+        0,
+        0
+      ],
+      "published_total": 386201
+    },
+    {
+      "id": "DERIVATIVES_EMPLOYEE_OPTIONS",
+      "title": "Financial derivatives and employee stock options",
+      "net_acquisition_assets": [
+        -391361,
+        43040,
+        -14086,
+        -397,
+        -318780
+      ],
+      "net_incurrence_liabilities": [
+        -317958,
+        -16363,
+        -764,
+        -443,
+        -346056
+      ],
+      "published_total": -681584
+    },
+    {
+      "id": "OTHER_RECEIVABLE_PAYABLE",
+      "title": "Other accounts receivable/payable",
+      "net_acquisition_assets": [
+        526602,
+        -344954,
+        -59830,
+        -223714,
+        131352
+      ],
+      "net_incurrence_liabilities": [
+        -196086,
+        -436523,
+        228656,
+        250097,
+        183312
+      ],
+      "published_total": 29456
+    }
+  ],
+  "reported": {
+    "sector_total_assets": [
+      767783,
+      1658190,
+      492065,
+      739782,
+      32595
+    ],
+    "sector_total_liabilities": [
+      -315087,
+      1407912,
+      1288374,
+      588248,
+      720968
+    ],
+    "sector_financial_surplus_deficit": [
+      1082870,
+      250278,
+      -796309,
+      151534,
+      -688373
+    ],
+    "sector_statistical_discrepancy": [
+      1025,
+      -109303,
+      -65119,
+      -85833,
+      259230
+    ],
+    "total_assets": 3690415,
+    "total_liabilities": 3690415,
+    "total_financial_surplus_deficit": 0,
+    "total_sector_statistical_discrepancy": 0
+  },
+  "io_2021": {
+    "listing": "https://www.nesdc.go.th/download/i-o-2021-16-sectors/",
+    "actual_resolved_xlsx": "https://www.nesdc.go.th/wp-content/uploads/2025/03/DataIO2021x16.xlsx",
+    "type": "INDUSTRY_BY_INDUSTRY_INPUT_OUTPUT",
+    "dataset_year": 2021,
+    "declared_industry_count": 16,
+    "expected_intermediate_block_shape": [
+      16,
+      16
+    ],
+    "workbook_bytes_accessible_in_session": false,
+    "workbook_cells_parsed": false,
+    "intermediate_transaction_matrix": null,
+    "unit": "NOT_VERIFIED_FROM_XLSX_CELLS",
+    "status": "DATA_BLOCKED_NO_BINARY_XLSX_CELL_READBACK"
+  },
+  "provenance_rule": "Raw published flows with negatives are valid annual net acquisitions/incurrences. Do not treat annual flows as financial stocks, 2026 GDP, or future automation coefficients.",
+  "confidence_boundary": "VERIFIED_ARITHMETIC_AGAINST_TEXT_EXTRACT; NOT_VERIFIED_AS_FULL_WORKBOOK_OR_PDF_VISUAL_CHECK",
+  "aom_skill_merged": false,
+  "production_changes": false
+}
